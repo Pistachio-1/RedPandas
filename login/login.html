@@ -97,7 +97,16 @@
 <script type="text/javascript" src="login.js"></script>
 <script type="text/javascript">
 	$("#login-submit").on("click", function(){
-		var username = $("#username").val().trim();
+		let username = $("#username").val().trim();
+		const getLogin = (username) => {
+			if(username){
+				username = "/username/" + username;
+			}
+			$.get("/api/users"+ username, function(data){
+				console.log("Welcome" + username);
+				
+			})
+		}
 	});
 	$("#register-submit").on("click",function(){
 
