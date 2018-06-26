@@ -41,3 +41,35 @@ $(function() {
 		}
 	}
 });
+
+$("#login-submit").on("click",function(){
+	let username = $("#username").val().trim();
+	const getLogin = (username) => {
+		if(username){
+			username = "/username/" + username;
+		}
+		$.get("/api/users"+ username, function(data){
+			console.log("Welcome" + username);
+
+		})
+	}
+	// if (username = password from mysql){
+	// 	$("#welcomeUser").append("Welcome, " + username);
+	// }
+	// else {
+	// 	$("#incorrectUserPass").append("Username or Password is incorrect. Please try again")
+	// }
+
+})
+
+$("#register-submit").on("click", function(){
+	// if (password = confirm password && no repeating username) {
+	// 	post new username into database 
+	// }
+	// else if (username is taken) {
+	// 	$("#noMatch").append("this username is already taken")
+	// }
+	// else if( password !== confirm password) {
+	// 	$("#noMatch").append("passwords do not match")
+	// }
+});
