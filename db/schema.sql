@@ -2,28 +2,30 @@ DROP DATABASE IF EXISTS worldcup_db;
 CREATE DATABASE worldcup_db;
 USE worldcup_db;
 
-CREATE TABLE user
+CREATE TABLE users
 (
-    user_name VARCHAR(255) NOT NULL,
-    user_id VARCHAR(255) NOT NULL PRIMARY KEY,
-    user_password VARCHAR(255) NOT NULL
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    user_name VARCHAR(30) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    user_password VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE rooms
 (
-	room_id INT(12) NOT NULL PRIMARY KEY,
-	room_name VARCHAR(255) NOT NULL
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	room_id INT(12) NOT NULL,
+	room_name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE room_participants
 (
     room_id INT(12) NOT NULL,
-    user_id VARCHAR(255) NOT NULL
+    user_name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE bracket
 (
-    user_id VARCHAR(255) NOT NULL,
+    user_name VARCHAR(30) NOT NULL,
     group_A VARCHAR(30) NOT NULL,
     group_B VARCHAR(30) NOT NULL,
     group_C VARCHAR(30) NOT NULL,
