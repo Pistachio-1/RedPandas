@@ -29,7 +29,8 @@ body, html {
     opacity: 0.7
 }
 .navbar.navbar-default.navbar-fixed-top {
-    background-color: #696D7D
+    background-color: #696D7D;
+    opacity: 0.7;
 
 }
 

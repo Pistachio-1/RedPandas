@@ -13,13 +13,12 @@ CREATE TABLE users
 CREATE TABLE rooms
 (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-	room_id INT(12) NOT NULL,
 	room_name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE room_participants
 (
-    room_id INT(12) NOT NULL,
+    room_name INT(12) NOT NULL,
     user_name VARCHAR(30) NOT NULL
 );
 
