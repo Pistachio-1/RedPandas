@@ -16,7 +16,7 @@ $(function() {
 		event.preventDefault();
     });
     
-    $("#login-submit").on("click",function(){
+    // $("#login-submit").on("click",function(){
         // let username = $("#username").val().trim();
 		// const getLogin = (username) => {
 		// 	if(username){
@@ -34,19 +34,19 @@ $(function() {
         //     $("#incorrectUserPass").append("Username or Password is incorrect. Please try again")
         // }
 
-    })
+    // })
 
-    $("#register-submit").on("click", function(){
+    // $("#register-submit").on("click", function(){
         // if (password = confirm password && no repeating username) {
         //     post new username into database 
         // }
         // else if (username is taken) {
-        //     $("#tryAgain").append("this username is already taken")
+        //     $("#noMatch").append("this username is already taken")
         // }
         // else if( password !== confirm password) {
-        //     $("#tryAgain").append("passwords do not match")
+        //     $("#noMatch").append("passwords do not match")
         // }
-    });
+    // });
 
 	const modal = document.getElementById('myModal');
 	// Get the button that opens the modal
