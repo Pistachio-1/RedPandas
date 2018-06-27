@@ -72,9 +72,9 @@ $(function() {
 		function register(newUser) {
 			$.post("/api/users/", newUser)
 				.then(function(data){
-				console.log(data);
-				alert("Adding new user")
-			});
+					console.log(data);
+					alert("Adding new user")
+				});
 		}
 		register();
 	});
