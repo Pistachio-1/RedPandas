@@ -20,6 +20,12 @@ module.exports = function(sequelize, DataTypes) {
         }
       }
     });
+    User.associate = function(models) {
+      console.log(models)
+      User.belongsToMany(models.Rooms, {
+        through: models.RoomParticipants
+      });
+    };
     return User;
   };
   

@@ -51,11 +51,11 @@ $(function() {
 	
 	
 	$("#register-submit").on("click", function(){
-		const user_name = $("#user_name").val().trim();
+		const username = $("#user_name").val().trim();
 		const email = $("#email").val().trim();
-		const pass_word = $("#pass_word").val().trim();
+		const password = $("#pass_word").val().trim();
 		const confPass = $("#confirm-password").val().trim();
-		if (!user_name || !email || !pass_word || !confPass) {
+		if (!username || !email || !password || !confPass) {
 			$("#tryAgain").append("Please fill out the whole form.")
 			return;
 		}
@@ -63,19 +63,30 @@ $(function() {
 			$("#tryAgain").append("Passwords do not match. Please try again.")
 		}
 		const newUser = {
-			user_name: user_name,
+			user_name: username,
 			email: email,
-			user_password: pass_word
+			user_password: password
 		};
 		console.log(newUser)
 	
 		function register(newUser) {
-			$.post("/api/users/", newUser)
-				.then(function(data){
-					console.log(data.newUser);
-					alert("Adding new user")
-				});
+			$.ajax ({
+				url:'/api/users/',
+				data: {	
+					user_name: username,
+					email: email,
+					user_password: password
+					},
+				type: 'post',
+				success: function(response) {
+					alert("data sent response is "+ response)
+				},
+				error : function(e) {
+					alert("data not sent")
+				}
+			});
 		}
+
 		register();
 	});
 });
