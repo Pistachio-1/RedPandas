@@ -30,35 +30,52 @@ $(function() {
 			modal.style.display = "none";
 		}
 	}
-});
 
-$("#login-submit").on("click",function(){
-	const username = $("#username").val().trim();
-	const password = $("#password").val().trim();
+	$("#login-submit").on("click",function(){
+		const username = $("#username").val().trim();
+		const password = $("#password").val().trim();
+		
+		function getLogin(username){
+			$.get("/api/users/"+username, function(data){
+				if(username === data.user_name && password === data.user_password){
+					$("#incorrectUserPass").append("Welcome, " + username);
+				}
+				else {
+					$("#incorrectUserPass").append("Username or Password is incorrect. Please try again")
+				}
 	
-	function getLogin(username){
-		$.get("/api/users/"+username, function(data){
-			if(username === data.user_name && password === data.user_password){
-				$("#incorrectUserPass").append("Welcome, " + username);
-			}
-			else {
-				$("#incorrectUserPass").append("Username or Password is incorrect. Please try again")
-			}
-
-		})
-	}
-	getLogin();
-})
-
-
-$("#register-submit").on("click", function(){
-	// if (password = confirm password && no repeating username) {
-	// 	post new username into database 
-	// }
-	// else if (username is taken) {
-	// 	$("#tryAgain").append("this username is already taken")
-	// }
-	// else if( password !== confirm password) {
-	// 	$("#tryAgain").append("passwords do not match")
-	// }
+			})
+		}
+		getLogin();
+	})
+	
+	
+	$("#register-submit").on("click", function(){
+		const user_name = $("#user_name").val().trim();
+		const email = $("#email").val().trim();
+		const pass_word = $("#pass_word").val().trim();
+		const confPass = $("#confirm-password").val().trim();
+		if (!user_name || !email || !pass_word || !confPass) {
+			$("#tryAgain").append("Please fill out the whole form.")
+			return;
+		}
+		else if(password !== confPass){
+			$("#tryAgain").append("Passwords do not match. Please try again.")
+		}
+		const newUser = {
+			user_name: username,
+			email: email,
+			user_password: password
+		};
+		console.log(newUser)
+	
+		function register(newUser) {
+			$.post("/api/users/", newUser)
+				.then(function(data){
+				console.log(data);
+				alert("Adding new user")
+			});
+		}
+		register();
+	});
 });
