@@ -8,6 +8,11 @@ const PORT = process.env.PORT || 8080;
 
 //handlebars
 const exphbs = require("express-handlebars");
+
+app.engine('.hbs', exphbs({extname: '.hbs'}));
+app.set('views', __dirname + '/views');
+app.set('view engine', '.hbs');
+
 // Requiring our models for syncing
 const db = require("./models");
 
@@ -33,3 +38,7 @@ db.sequelize.sync({ force: true }).then(function() {
     console.log("App listening on PORT " + PORT);
   });
 });
+
+app.get("/bracket", function(req,res) {
+  res.render("bracket", {layout: false})
+})

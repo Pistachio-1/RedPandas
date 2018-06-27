@@ -4,7 +4,7 @@ const path = require("path");
 // =============================================================
 
 module.exports =function(app) {
-    app.get("/bracket", function(req,res) {
-        res.render(path.join(__dirname, "bracket.handlebars"));
-    })
+    // app.get("/bracket", function(req,res) {
+    //     res.render(path.join(__dirname, "bracket.handlebars"));
+    // })
 }
