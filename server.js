@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+//handlebars
+const exphbs = require("express-handlebars");
 // Requiring our models for syncing
 const db = require("./models");
 
@@ -22,7 +24,7 @@ app.use(express.static("public"));
 // Routes
 // =============================================================
 require("./routes/api-routes")(app);
-// require("./routes/html-routes")(app);
+require("./routes/html-routes")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
