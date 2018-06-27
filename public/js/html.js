@@ -35,20 +35,21 @@ $(function() {
 $("#login-submit").on("click",function(){
 	const username = $("#username").val().trim();
 	const password = $("#password").val().trim();
-	const getLogin = (username) => {
+	
+	function getLogin(username){
 		$.get("/api/users/"+username, function(data){
-			console.log("Welcome ", data)
+			if(username === data.user_name && password === data.user_password){
+				$("#incorrectUserPass").append("Welcome, " + username);
+			}
+			else {
+				$("#incorrectUserPass").append("Username or Password is incorrect. Please try again")
+			}
 
 		})
 	}
-	// if (username = password from mysql){
-	// 	$("#incorrectUserPass").append("Welcome, " + username);
-	// }
-	// else {
-	// 	$("#incorrectUserPass").append("Username or Password is incorrect. Please try again")
-	// }
-
+	getLogin();
 })
+
 
 $("#register-submit").on("click", function(){
 	// if (password = confirm password && no repeating username) {
