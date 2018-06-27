@@ -29,7 +29,8 @@ const getServerResults = function (qstring) {
             resolve(err);
         });
     })
-)};
+    )
+};
 
 let results = '';
 async function getMatch(matchtype, fifa_code, cb) {
@@ -59,9 +60,13 @@ async function getMatch(matchtype, fifa_code, cb) {
             throw new Error(err);
     }
 
-    console.log('qstring: ' + qstring);
-    results = await getServerResults(qstring);
-    cb(results);
+    // console.log('qstring: ' + qstring);
+    try {
+        results = await getServerResults(qstring);
+        // console.log(results);
+    } catch (err) {
+        throw err;
+    }
 };
 
 module.exports = {
