@@ -89,8 +89,8 @@ $(".round2AC2").click(function(){
 $(".round2EG1").click(function(){
     var teamEGPick = ($(this).val());
     $("#selectedEG").append(teamEGPick);
-    $(".round2AC1").attr("disabled", "disabled");
-    $(".round2AC2").attr("disabled", "disabled");
+    $(".round2EG1").attr("disabled", "disabled");
+    $(".round2EG2").attr("disabled", "disabled");
     $("#round3EG").val(teamEGPick)
 })
 
@@ -142,13 +142,15 @@ $(".round2FH2").click(function(){
 $("#round3AC").click(function(){
     var teamACEGPick = ($(this).val());
     $("#selectedACEG").append(teamACEGPick);
-    $("#round3AC").attr("disabled", "disabled");   
+    $("#round3AC").attr("disabled", "disabled");
+    $("#round3EG").attr("disabled", "disabled");      
 });
 
 $("#round3EG").click(function() {
     var teamACEGPick = ($(this).val());
     $("#selectedACEG").append(teamACEGPick);
-    $("#round3AC").attr("disabled", "disabled");   
+    $("#round3AC").attr("disabled", "disabled");  
+    $("#round3EG").attr("disabled", "disabled");   
 });
 
 //4.B/D/F/H
@@ -157,12 +159,16 @@ $("#round3BD").click(function() {
     var teamBDFHPick = ($(this).val());
     console.log(teamBDFHPick);
     $("#selectedBDFH").append(teamBDFHPick);
+    $("#round3BD").attr("disabled", "disabled");  
+    $("#round3EF").attr("disabled", "disabled"); 
 });
 
 $("#round3FH").click(function() {
     var teamBDFHPick = ($(this).val());
     console.log(teamBDFHPick);
     $("#selectedBDFH").append(teamBDFHPick);
+    $("#round3BD").attr("disabled", "disabled");  
+    $("#round3EF").attr("disabled", "disabled"); 
 })
 
 
@@ -170,9 +176,13 @@ $("#round3FH").click(function() {
 //final winner pick 
 
 $("#round4ACEG").click(function() {
-    $("#selectedACEG").append(" - chosen winner!")
+    $("#selectedACEG").append(" - chosen winner!");
+    $("#round4ACEG").attr("disabled", "disabled"); 
+    $("#round4BDFH").attr("disabled", "disabled"); 
 });
 
 $("#round4BDFH").click(function() {
     $("#selectedBDFH").append(" - chosen winner!")
+    $("#round4ACEG").attr("disabled", "disabled"); 
+    $("#round4BDFH").attr("disabled", "disabled"); 
 });

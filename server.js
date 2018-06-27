@@ -38,7 +38,3 @@ db.sequelize.sync({ force: true }).then(function() {
     console.log("App listening on PORT " + PORT);
   });
 });
-
-app.get("/bracket", function(req,res) {
-  res.render("bracket", {layout: false})
-})
