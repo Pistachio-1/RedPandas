@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     });
   
     RoomParticipants.associate = function(models) {
-      RoomParticipants.belongsToMany(models.Rooms, {
+      RoomParticipants.belongsTo(models.Rooms, {
         through: models.User
       });
     };

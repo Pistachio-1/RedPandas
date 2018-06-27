@@ -22,8 +22,9 @@ CREATE TABLE room_participants
     user_name VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE bracket (
-    user_name VARCHAR(30) NOT NULL PRIMARY KEY,
+CREATE TABLE bracket
+(
+    user_name VARCHAR(30) NOT NULL,
     round16_game_1 VARCHAR(30) NOT NULL,
     round16_game_2 VARCHAR(30) NOT NULL,
     round16_game_3 VARCHAR(30) NOT NULL,
