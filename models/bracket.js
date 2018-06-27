@@ -19,8 +19,8 @@ module.exports = function(sequelize, DataTypes) {
     });
   
     Brackets.associate = function(models) {
-      Brackets.belongsToOne(models.User, {
-        through: models.User
+      Brackets.belongsTo(models.Rooms, {
+        through: models.Rooms
       });
     };
   
