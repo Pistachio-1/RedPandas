@@ -1,8 +1,8 @@
 {
     "development": {
       "username": "root",
-      "password": "",
-      "database": "worldcup_db",
+      "password": "ASK4lyfe!",
+      "database": "userPicks_db",
       "host": "127.0.0.1",
       "port": 3306,
       "dialect": "mysql"
