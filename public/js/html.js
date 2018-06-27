@@ -63,16 +63,16 @@ $(function() {
 			$("#tryAgain").append("Passwords do not match. Please try again.")
 		}
 		const newUser = {
-			user_name: username,
+			user_name: user_name,
 			email: email,
-			user_password: password
+			user_password: pass_word
 		};
 		console.log(newUser)
 	
 		function register(newUser) {
 			$.post("/api/users/", newUser)
 				.then(function(data){
-					console.log(data);
+					console.log(data.newUser);
 					alert("Adding new user")
 				});
 		}
