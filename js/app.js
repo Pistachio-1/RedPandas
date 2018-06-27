@@ -1,8 +1,4 @@
 const https = require('https');
-const express = require("express");
-const app = express();
-// const jQuery = require("jquery");
-// const jsdom = require("jsdom");
 
 const WORLDCUPURL = "https://worldcup.sfg.io/";
 const ALLMATCHES = "/matches";
@@ -35,7 +31,8 @@ const getServerResults = function (qstring) {
     })
 )};
 
-async function getMatch(matchtype, fifa_code) {
+let results = '';
+async function getMatch(matchtype, fifa_code, cb) {
     switch (matchtype) {
         case null:
         case undefined:
@@ -63,8 +60,8 @@ async function getMatch(matchtype, fifa_code) {
     }
 
     console.log('qstring: ' + qstring);
-    let results = await getServerResults(qstring);
-    console.log(results);
+    results = await getServerResults(qstring);
+    cb(results);
 };
 
 module.exports = {
