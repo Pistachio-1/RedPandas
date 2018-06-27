@@ -33,6 +33,7 @@ require("./routes/user-routes")(app);
 require("./routes/rooms-routes")(app);
 require("./routes/roomparti-routes")(app);
 require("./routes/html-routes")(app);
+require("./routes/bracket-routes")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
