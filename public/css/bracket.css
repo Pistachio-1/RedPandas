@@ -26,6 +26,22 @@ main{
     background-color: #F0EBE7;
   }
 
+  .bracketTitle  {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .topImage {
+    max-width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
   .heading {
     color: #1F271B;
     text-align: center;
