@@ -14,28 +14,29 @@ const RESULTSBYGROUP = "/teams/group_results";
 const ALLTEAMS = "/teams/"
 
 let qstring = WORLDCUPURL;
-let data = '';
 
 const getServerResults = function (qstring) {
-    https.get(qstring, (resp) => {
+    return (new Promise(function (resolve, reject) {
+        let promise, data = '';
+        https.get(qstring, (resp) => {
 
-        // A chunk of data has been recieved.
-        resp.on('data', (chunk) => {
-            data += chunk;
+            // A chunk of data has been recieved.
+            resp.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            // The whole response has been received. Print out the result.
+            resp.on('end', () => {
+                resolve(data);
+            });
+        }).on("error", (err) => {
+            resolve(err);
         });
+    })
+)};
 
-        // The whole response has been received. Print out the result.
-        resp.on('end', () => {
-            console.log(data);
-            // return data;
-        });
 
-    }).on("error", (err) => {
-        throw err;
-    });
-}
-
-const getMatch = function (matchtype, fifa_code) {
+async function getMatch(matchtype, fifa_code) {
     switch (matchtype) {
         case null:
         case undefined:
@@ -63,15 +64,12 @@ const getMatch = function (matchtype, fifa_code) {
     }
 
     console.log('qstring: ' + qstring);
-    getServerResults(qstring);
+    let results = await getServerResults(qstring);
+    console.log(results);
 };
 
-// some tests
-// getMatch.cb = function(data) {
-//     console.log(data);
-// }
 
-getMatch(ALLMATCHES);
+getMatch(TODAYMATCHES);
 
 module.exports = {
     ALLMATCHES,
