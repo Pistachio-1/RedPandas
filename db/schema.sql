@@ -22,22 +22,21 @@ CREATE TABLE room_participants
     user_name VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE bracket
-(
-    user_name VARCHAR(30) NOT NULL,
-    group_A VARCHAR(30) NOT NULL,
-    group_B VARCHAR(30) NOT NULL,
-    group_C VARCHAR(30) NOT NULL,
-    group_D VARCHAR(30) NOT NULL,
-    group_E VARCHAR(30) NOT NULL,
-    group_F VARCHAR(30) NOT NULL,
-    group_G VARCHAR(30) NOT NULL,
-    group_H VARCHAR(30) NOT NULL,
-    quarter_A VARCHAR(30) NOT NULL,
-    quarter_B VARCHAR(30) NOT NULL,
-    quarter_C VARCHAR(30) NOT NULL,
-    quarter_D VARCHAR(30) NOT NULL,
-    semi_A VARCHAR(30) NOT NULL,
-    semi_B VARCHAR(30) NOT NULL,
-    final VARCHAR(30) NOT NULL
+CREATE TABLE bracket (
+    user_name VARCHAR(30) NOT NULL PRIMARY KEY,
+    round16_game_1 VARCHAR(30) NOT NULL,
+    round16_game_2 VARCHAR(30) NOT NULL,
+    round16_game_3 VARCHAR(30) NOT NULL,
+    round16_game_4 VARCHAR(30) NOT NULL,
+    round16_game_5 VARCHAR(30) NOT NULL,
+    round16_game_6 VARCHAR(30) NOT NULL,
+    round16_game_7 VARCHAR(30) NOT NULL,
+    round16_game_8 VARCHAR(30) NOT NULL, 
+    round8_game_1 VARCHAR(30) NOT NULL,
+    round8_game_2 VARCHAR(30) NOT NULL,
+    round8_game_3 VARCHAR(30) NOT NULL,
+    round8_game_4 VARCHAR(30) NOT NULL,
+    round4_game_1 VARCHAR(30) NOT NULL,
+    round4_game_2 VARCHAR(30) NOT NULL,
+    champion VARCHAR(30) NOT NULL
 )
