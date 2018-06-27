@@ -35,7 +35,6 @@ const getServerResults = function (qstring) {
     })
 )};
 
-
 async function getMatch(matchtype, fifa_code) {
     switch (matchtype) {
         case null:
@@ -67,9 +66,6 @@ async function getMatch(matchtype, fifa_code) {
     let results = await getServerResults(qstring);
     console.log(results);
 };
-
-
-getMatch(TODAYMATCHES);
 
 module.exports = {
     ALLMATCHES,
