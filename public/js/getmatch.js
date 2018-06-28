@@ -1,5 +1,3 @@
-const https = require('https');
-
 const WORLDCUPURL = "https://worldcup.sfg.io/";
 const ALLMATCHES = "/matches";
 const CURRENTMATCHES = "/matches/current";
@@ -30,7 +28,7 @@ const getServerResults = function (qstring) {
     )
 };
 
-async function getMatch(matchtype, fifa_code, cb) {
+async function getMatch(matchtype, fifa_code) {
     let qstring = WORLDCUPURL;
     switch (matchtype) {
         case null:
@@ -59,22 +57,23 @@ async function getMatch(matchtype, fifa_code, cb) {
     }
 
     // console.log('qstring: ' + qstring);
-    try {
-        results = await getServerResults(qstring);
-        // console.log(results);
-        cb(results);
-    } catch (err) {
-        throw err;
-    }
+    return $.get(qstring);
+    // try {
+    //     results = await getServerResults(qstring);
+    //     // console.log(results);
+    //     cb(results);
+    // } catch (err) {
+    //     throw err;
+    // }
 };
 
-module.exports = {
-    ALLMATCHES,
-    CURRENTMATCHES,
-    COUNTRYMATCHES,
-    TODAYMATCHES,
-    ALLRESULTS,
-    RESULTSBYGROUP,
-    ALLTEAMS,
-    getMatch
-};
+// module.exports = {
+//     ALLMATCHES,
+//     CURRENTMATCHES,
+//     COUNTRYMATCHES,
+//     TODAYMATCHES,
+//     ALLRESULTS,
+//     RESULTSBYGROUP,
+//     ALLTEAMS,
+//     getMatch
+// };
