@@ -3,7 +3,7 @@ const https = require('https');
 const WORLDCUPURL = "https://worldcup.sfg.io/";
 const ALLMATCHES = "/matches";
 const CURRENTMATCHES = "/matches/current";
-const COUNTRYMATCHES = "/matches/country/fifa-code=";
+const COUNTRYMATCHES = "/matches/country?fifa_code=";
 const TODAYMATCHES = "/matches/today";
 const ALLRESULTS = "/teams/results";
 const RESULTSBYGROUP = "/teams/group_results";

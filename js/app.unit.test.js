@@ -8,7 +8,7 @@ console.log(GETMATCH);
 // tests from completing successfully but they leave nasty warnings in the test code.
 process.on('unhandledRejection', error => {
     // Will print "unhandledRejection err is not defined"
-    console.log('unhandledRejection', error.message);
+    console.log('unhandledRejection:', error.message);
 });
 
 let results = "";
@@ -28,11 +28,12 @@ describe("getMatch", () => {
     });
 
     it("calls getMatch with COUNTRYMATCHES and fifa_code parameter",() => {
-        expect(GETMATCH.getMatch(GETMATCH.COUNTRYMATCHES, "RUS", callback)).toBeDefined();
+        expect(GETMATCH.getMatch(GETMATCH.COUNTRYMATCHES, "KOR", callback)).toBeDefined();
     });
 
     it("calls getMatch with COUNTRYMATCHES",() => {
-        expect(GETMATCH.getMatch(GETMATCH.COUNTRYMATCHES, null, callback)).toThrowError();
+        expect(GETMATCH.getMatch(GETMATCH.COUNTRYMATCHES, null, callback)).
+        toThrowError("a country match must have a fifa code");
     });
 
     it("calls getMatch with TODAYMATCHES",() => {
@@ -52,10 +53,12 @@ describe("getMatch", () => {
     });
 
     it("calls getMatch with invalid match type", () => {
-        expect(GETMATCH.getMatch("invalid", null, callback)).toThrowError();
+        expect(GETMATCH.getMatch("invalid", null, callback)).
+        toThrowError("invalid match type: invalid");
     });
 
     it("calls getMatch with null type", () => {
-        expect(GETMATCH.getMatch(null, null, callback)).toThrowError();
+        expect(GETMATCH.getMatch(null, null, callback)).
+        toThrowError("matchtype is undefined or null");
     });
 });
