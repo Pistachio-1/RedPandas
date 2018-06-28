@@ -10,7 +10,7 @@ $(function () {
 			let away_goals = r.away_team.goals;
 			let home = r.home_team.country;
 			let home_goals = r.home_team.goals;
-			let status = r.status;
+			let status = (r.status === "completed") ? "FINAL" : r.status;
 
 			let matchStatus = away + " (" + away_goals + ") vs. (" + home_goals + ") " + home + "   " + status;
 			console.log(matchStatus);
