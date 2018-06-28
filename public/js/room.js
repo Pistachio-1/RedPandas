@@ -13,45 +13,30 @@ $(function() {
   });
 
   function room() {  
-  const room = $("#room_name").val().trim();
-  const roomPass = $("#room_pass").val().trim();
-  const roomConPass = $("#room_confirmpass").val().trim();
-
-  $("#room-submit").on("click", function(event){
+    
+    $("#room-submit").on("click", function(event){
+      const room = $("#room_name").val().trim();
+      const roomPass = $("#room_pass").val().trim();
+      const roomConPass = $("#room_confirmpass").val().trim();
     event.preventDefault();
-    // if (!room || !roomConPass || !roomPass ) {
-    //   $("#inputAlert").append("Please fill out the whole form.");
-    //   return;
-    // }
-    // else if(roomPass !== roomConPass){
-    //   $("#inputAlert").append("Passwords do not match. Please try again.");
-    //   return;
-    // }
-    // else if(isNaN(roomPass)){
-    //   $("#inputAlert").append("Password is not valid. Please input a 4 digit number");
-    //   return;
-    // }
+    if (!room || !roomConPass || !roomPass ) {
+      $("#inputAlert").append("Please fill out the whole form.");
+      return;
+    }
+    else if(roomPass !== roomConPass){
+      $("#inputAlert").append("Passwords do not match. Please try again.");
+      return;
+    }
+    else if(isNaN(roomPass)){
+      $("#inputAlert").append("Password is not valid. Please input a 4 digit number");
+      return;
+    }
     const newRoom = {
       room_name: room,
       room_password: roomPass
     }
     console.log(newRoom);
 
-    // $.ajax({
-    //   url:'/api/rooms/',
-    //   data: {
-    //     room_name: room,
-    //     room_password: roomPass
-    //   },
-    //   type: 'post',
-    //   success: function(response){
-    //     initializeRows();
-    //   },
-    //   error: function(err){
-    //     alert("could not post");
-    //     throw err;
-    //     }
-    //   });
     $.post("/api/rooms/", newRoom).then(initializeRows)
   })
 }

@@ -34,22 +34,9 @@ $(function() {
 	$("#login-submit").on("click",function(){
 		const username = $("#username").val().trim();
 		const password = $("#password").val().trim();
-	
-		$.get("/api/users/"+username, function(data){
-			if(err){
-				throw err;
-			}
-			else if (username === data.user_name && password === data.user_password){
-				$("#welcomeUser").append("Welcome, " + username);
-			}
-			else {
-				$("#incorrectUserPass").append("Username or Password is incorrect. Please try again")
-			}
-
-		})
+		getLogin();
 	
 	})
-	
 	
 	$("#register-submit").on("click", function(){
 		const username = $("#user_name").val().trim();
@@ -70,22 +57,37 @@ $(function() {
 		};
 		console.log(newUser)
 	
-		$.ajax ({
-			url:'/api/users/',
-			data: {	
-				user_name: username,
-				email: email,
-				user_password: password
-				},
-			type: 'post',
-			success: function(response) {
-				$("#welcomeUser").append("Welcome, " + username);
-			},
-			error : function(err) {
-				alert("data not sent");
+		// $.ajax ({
+		// 	url:'/api/users/',
+		// 	data: {	
+		// 		user_name: username,
+		// 		email: email,
+		// 		user_password: password
+		// 		},
+		// 	type: 'post',
+		// 	success: function(response) {
+		// 		$("#welcomeUser").append("Welcome, " + username);
+		// 	},
+		// 	error : function(err) {
+		// 		alert("data not sent");
+		// 		throw err;
+		// 	}
+		// });
+		$.get("api/users/", newUser).then(getLogin)
+	});
+
+	function getLogin(){
+		$.get("/api/users/"+username, function(data){
+			if(err){
 				throw err;
 			}
-		});
+			else if (username === data.user_name && password === data.user_password){
+				$("#welcomeUser").append("Welcome, " + username);
+			}
+			else {
+				$("#incorrectUserPass").append("Username or Password is incorrect. Please try again")
+			}
 
-	});
+		})
+	}
 });
