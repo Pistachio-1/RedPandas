@@ -3,11 +3,5 @@ module.exports = function(sequelize, DataTypes) {
       room_name: DataTypes.STRING,
     });
   
-    RoomParticipants.associate = function(models) {
-      RoomParticipants.belongsTo(models.Rooms, {
-        through: models.User
-      });
-    };
-  
     return RoomParticipants;
 };
