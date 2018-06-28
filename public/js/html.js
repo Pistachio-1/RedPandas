@@ -1,25 +1,23 @@
 $(function () {
 
-	let html_dest  = $("#parallax2-content");
-	function successCallback(resp) {
+	let html_dest = $("#parallax2-content");
+	function matchesCallback(resp) {
 		console.log(resp);
 		html_dest.val = "";
 		resp.forEach(r => {
-			// if (r.status != "completed") {
-				console.log(r);
-				let away = r.away_team.country;
-				let away_goals = r.away_team.goals;
-				let home = r.home_team.country;
-				let home_goals = r.home_team.goals;
-				let status = r.status;
+			console.log(r);
+			let away = r.away_team.country;
+			let away_goals = r.away_team.goals;
+			let home = r.home_team.country;
+			let home_goals = r.home_team.goals;
+			let status = r.status;
 
-				let matchStatus = away + " " + away_goals + " - " + home_goals + " " + home  + "  " + status;
-				console.log(matchStatus);
-				$("#parallax2-content").append(matchStatus + "<br>");
-			// }
+			let matchStatus = away + " (" + away_goals + ") vs. (" + home_goals + ") " + home + "   " + status;
+			console.log(matchStatus);
+			html_dest.append(matchStatus + "<br>");
 		});
 	};
-	let matches = getMatch(TODAYMATCHES, null).then(successCallback);
+	getMatch(TODAYMATCHES, null).then(matchesCallback);
 
 
 	$("#login-form").show();
