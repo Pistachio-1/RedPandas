@@ -1,6 +1,6 @@
 jest.autoMockOff();  
 
-const GETMATCH = require("./app.js");
+const GETMATCH = require("./getmatch");
 console.log(GETMATCH);
 
 // the following piece of code will handled "unhandledRejection" events

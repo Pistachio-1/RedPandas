@@ -1,5 +1,3 @@
-const https = require('https');
-
 const WORLDCUPURL = "https://worldcup.sfg.io/";
 const ALLMATCHES = "/matches";
 const CURRENTMATCHES = "/matches/current";
@@ -9,28 +7,7 @@ const ALLRESULTS = "/teams/results";
 const RESULTSBYGROUP = "/teams/group_results";
 const ALLTEAMS = "/teams/"
 
-const getServerResults = function (qstring) {
-    return (new Promise(function (resolve, reject) {
-        let promise, data = '';
-        https.get(qstring, (resp) => {
-
-            // A chunk of data has been recieved.
-            resp.on('data', (chunk) => {
-                data += chunk;
-            });
-
-            // The whole response has been received. Print out the result.
-            resp.on('end', () => {
-                resolve(data);
-            });
-        }).on("error", (err) => {
-            resolve(err);
-        });
-    })
-    )
-};
-
-async function getMatch(matchtype, fifa_code, cb) {
+async function getMatch(matchtype, fifa_code) {
     let qstring = WORLDCUPURL;
     switch (matchtype) {
         case null:
@@ -59,22 +36,5 @@ async function getMatch(matchtype, fifa_code, cb) {
     }
 
     // console.log('qstring: ' + qstring);
-    try {
-        results = await getServerResults(qstring);
-        // console.log(results);
-        cb(results);
-    } catch (err) {
-        throw err;
-    }
-};
-
-module.exports = {
-    ALLMATCHES,
-    CURRENTMATCHES,
-    COUNTRYMATCHES,
-    TODAYMATCHES,
-    ALLRESULTS,
-    RESULTSBYGROUP,
-    ALLTEAMS,
-    getMatch
+    return $.get(qstring);
 };
