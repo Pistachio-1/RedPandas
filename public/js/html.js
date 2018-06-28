@@ -1,4 +1,9 @@
 $(function() {
+	GETMATCH.getMatch(GETMATCH.TODAYMATCHES, null, function(results) {
+		let strResults = JSON.stringify(results).slice(0,100);
+		$("#lead1").val=strResults;
+	});
+
 	$("#login-form").show();
 	$("#register-form").hide();
     $('#login-form-link').click(function(event) {
@@ -76,6 +81,8 @@ $(function() {
 				alert("Adding new user")
 			});
 		}
+
+
 		register();
 	});
 });
