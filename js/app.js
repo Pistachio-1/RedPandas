@@ -3,13 +3,11 @@ const https = require('https');
 const WORLDCUPURL = "https://worldcup.sfg.io/";
 const ALLMATCHES = "/matches";
 const CURRENTMATCHES = "/matches/current";
-const COUNTRYMATCHES = "/matches/country/fifa-code=";
+const COUNTRYMATCHES = "/matches/country?fifa_code=";
 const TODAYMATCHES = "/matches/today";
 const ALLRESULTS = "/teams/results";
 const RESULTSBYGROUP = "/teams/group_results";
 const ALLTEAMS = "/teams/"
-
-let qstring = WORLDCUPURL;
 
 const getServerResults = function (qstring) {
     return (new Promise(function (resolve, reject) {
@@ -32,8 +30,8 @@ const getServerResults = function (qstring) {
     )
 };
 
-let results = '';
 async function getMatch(matchtype, fifa_code, cb) {
+    let qstring = WORLDCUPURL;
     switch (matchtype) {
         case null:
         case undefined:
@@ -64,6 +62,7 @@ async function getMatch(matchtype, fifa_code, cb) {
     try {
         results = await getServerResults(qstring);
         // console.log(results);
+        cb(results);
     } catch (err) {
         throw err;
     }
