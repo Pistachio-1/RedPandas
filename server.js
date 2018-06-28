@@ -6,6 +6,13 @@ const bodyParser = require("body-parser");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+//handlebars
+const exphbs = require("express-handlebars");
+
+app.engine('.hbs', exphbs({extname: '.hbs'}));
+app.set('views', __dirname + '/views');
+app.set('view engine', '.hbs');
+
 // Requiring our models for syncing
 const db = require("./models");
 
@@ -22,12 +29,13 @@ app.use(express.static("public"));
 // Routes
 // =============================================================
 require("./routes/api-routes")(app);
-// require("./routes/html-routes")(app);
+require("./routes/html-routes")(app);
+require("./routes/bracket-routes")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(function() {
+db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
-})
+});

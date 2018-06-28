@@ -1,6 +1,36 @@
-<link rel ="stylesheet" src= "../public/css/bracket.css">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/bracket.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    </head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header"><a class="navbar-brand navbar-link" target="blank">
+            <class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><i class="fas fa-chevron-circle-down"></i>
+                <id="welcomeUser"></id>
+        </div>
+    <div class="collapse navbar-collapse" id="navcol-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li role="presentation"><a href="#" id="login-start">sign in</a></li>
+                <li role="presentation"><a href="#">how to use</a></li>
+                    <li role="presentation"><a href="#">connect to a room </a></li>
+                    <li role="presentation"><a href="#">contact </a></li>
+                </ul>
+                    </div>
+                </div>
+            </nav>
 <div class="container">
-        <p class = "heading">Your 2018 World Cup Bracket</p>
+        <img class= "topImage" src="images/title.png">
+        <p class= "bracketTitle">YOUR BRACKET</p>
         <main id="tournament">
 <!-- round 1 -->
             <ul class="round round-1">
@@ -32,8 +62,8 @@
 
                 <li class="game game-bottom">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input round16C" type="checkbox"  value="2D">
-                        <label class="form-check-label" for="inlineCheckbox1">2D</label>
+                        <input class="form-check-input round16C" type="checkbox"  value="Argentina">
+                        <label class="form-check-label" for="inlineCheckbox1">Argentina</label>
                     </div>
                 </li>
         
@@ -48,8 +78,8 @@
                 <li class="game game-spacer">&nbsp;</li>
                 <li class="game game-bottom ">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input round16E" type="checkbox" value="2F">
-                        <label class="form-check-label" for="inlineCheckbox1">2F</label>
+                        <input class="form-check-input round16E" type="checkbox" value="Mexico">
+                        <label class="form-check-label" for="inlineCheckbox1">Mexico</label>
                     </div>
                 </li>
         
@@ -104,8 +134,8 @@
                 
                 <li class="game game-top">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input round16F" type="checkbox" value="F1">
-                        <label class="form-check-label" for="inlineCheckbox1">F1</label>
+                        <input class="form-check-input round16F" type="checkbox" value="Sweden">
+                        <label class="form-check-label" for="inlineCheckbox1">Sweden</label>
                     </div>
                 </li>
 
@@ -274,4 +304,6 @@
             </ul>       
         </main>
     </div>   
-<script src ="../public/js/bracketlogic.js"></script>
+<script src ="js/bracketlogic.js"></script>
+</body>
+</html>
