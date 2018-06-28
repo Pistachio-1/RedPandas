@@ -1,7 +1,7 @@
 {
     "development": {
       "username": "root",
-      "password": "m7i8k8e3",
+      "password": "ASK4lyfe!",
       "database": "worldcup_db",
       "host": "127.0.0.1",
       "port": 3306,
@@ -9,7 +9,7 @@
     },
     "test": {
       "username": "root",
-      "password": "m7i8k8e3",
+      "password": null,
       "database": "worldcup_test_db",
       "host": "127.0.0.1",
       "port": 3306,
@@ -17,7 +17,7 @@
     },
     "production": {
       "username": "root",
-      "password": "m7i8k8e3",
+      "password": null,
       "database": "worldcup_prod_db",
       "host": "127.0.0.1",
       "port": 3306,
