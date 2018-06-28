@@ -11,49 +11,51 @@ process.on('unhandledRejection', error => {
     console.log('unhandledRejection', error.message);
 });
 
+let results = "";
+function callback(results) {
+    console.log(JSON.stringify(results).slice(0,100));
+};
+
 describe("getMatch", () => {
-    let results = "";
-    function callback(results) {
-        console.log(results);
-    };
+
 
     it("calls getMatch with ALLMATCHES parameter",() => {
-        expect(GETMATCH.getMatch(GETMATCH.ALLMATCHES, null, callback(results))).toBeDefined();
+        expect(GETMATCH.getMatch(GETMATCH.ALLMATCHES, null, callback)).toBeDefined();
     });
 
     it("calls getMatch with CURRENTMATCHES parameter",() => {
-        expect(GETMATCH.getMatch(GETMATCH.CURRENTMATCHES, null, callback(results))).toBeDefined();
+        expect(GETMATCH.getMatch(GETMATCH.CURRENTMATCHES, null, callback)).toBeDefined();
     });
 
     it("calls getMatch with COUNTRYMATCHES and fifa_code parameter",() => {
-        expect(GETMATCH.getMatch(GETMATCH.COUNTRYMATCHES, "RUS", callback(results))).toBeDefined();
+        expect(GETMATCH.getMatch(GETMATCH.COUNTRYMATCHES, "RUS", callback)).toBeDefined();
     });
 
     it("calls getMatch with COUNTRYMATCHES",() => {
-        expect(GETMATCH.getMatch(GETMATCH.COUNTRYMATCHES, null, callback(results))).toThrowError();
+        expect(GETMATCH.getMatch(GETMATCH.COUNTRYMATCHES, null, callback)).toThrowError();
     });
 
     it("calls getMatch with TODAYMATCHES",() => {
-        expect(GETMATCH.getMatch(GETMATCH.TODAYMATCHES, null, callback(results))).toBeDefined();
+        expect(GETMATCH.getMatch(GETMATCH.TODAYMATCHES, null, callback)).toBeDefined();
     });
 
     it("calls getMatch with ALLRESULTS",() => {
-        expect(GETMATCH.getMatch(GETMATCH.ALLRESULTS, null, callback(results))).toBeDefined();
+        expect(GETMATCH.getMatch(GETMATCH.ALLRESULTS, null, callback)).toBeDefined();
     });
 
     it("calls getMatch with RESULTSBYGROUP",() => {
-        expect(GETMATCH.getMatch(GETMATCH.RESULTSBYGROUP, null, callback(results))).toBeDefined();
+        expect(GETMATCH.getMatch(GETMATCH.RESULTSBYGROUP, null, callback)).toBeDefined();
     });
 
     it("calls getMatch with ALLTEAMS",() => {
-        expect(GETMATCH.getMatch(GETMATCH.ALLTEAMS, null, callback(results))).toBeDefined();
+        expect(GETMATCH.getMatch(GETMATCH.ALLTEAMS, null, callback)).toBeDefined();
     });
 
     it("calls getMatch with invalid match type", () => {
-        expect(GETMATCH.getMatch("invalid", null, callback(results))).toThrowError();
+        expect(GETMATCH.getMatch("invalid", null, callback)).toThrowError();
     });
 
     it("calls getMatch with null type", () => {
-        expect(GETMATCH.getMatch(null, null, callback(results))).toThrowError();
+        expect(GETMATCH.getMatch(null, null, callback)).toThrowError();
     });
 });

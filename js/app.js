@@ -9,8 +9,6 @@ const ALLRESULTS = "/teams/results";
 const RESULTSBYGROUP = "/teams/group_results";
 const ALLTEAMS = "/teams/"
 
-let qstring = WORLDCUPURL;
-
 const getServerResults = function (qstring) {
     return (new Promise(function (resolve, reject) {
         let promise, data = '';
@@ -33,6 +31,7 @@ const getServerResults = function (qstring) {
 };
 
 async function getMatch(matchtype, fifa_code, cb) {
+    let qstring = WORLDCUPURL;
     switch (matchtype) {
         case null:
         case undefined:
