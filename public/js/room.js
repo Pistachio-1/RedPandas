@@ -5,6 +5,7 @@ $(function() {
   $("#joinRoom").on("click",function(event){ 
     $("#all-rooms").show();
     initializeRows();
+    $("#joinRoom").off();
   })
 
   $("#createRoom").on("click",function(event){
@@ -36,7 +37,11 @@ $(function() {
       room_password: roomPass
     }
 
-    $.post("/api/rooms/", newRoom).then(initializeRows)
+    console.log(newRoom);
+    $("#all-rooms").append(newRoom)
+
+    $.post("/api/rooms/", newRoom);
+    $(location).attr('href', '/bracket')
   })
 }
   
@@ -62,27 +67,27 @@ $(function() {
     list.append("<p>" + res.room_name.toUpperCase() + "</p>");
 
     const enterPass = $("<form/>");
-    enterPass.attr("id", "enterPass");
+    //enterPass.attr("id", "enterPass");
     enterPass.addClass("enterPass")
 
     const form = $("<input/>", {type:"password"})
     form.attr({name:"roomcode"});
-    form.attr({id:"enter-pass"});
+    form.attr({id:"enter-pass"+res.id});
     form.addClass("form-control");
     form.attr({placeholder:"Enter 4 digit password"});
     const submit = $("<input/>", {type: "submit"})
-    submit.attr({id:"room-submit"});
+    submit.attr({id:"room-submit"+res.id});
     submit.addClass("form-control");
     submit.attr({value:"Submit"});
 
     enterPass.prepend(form);
     enterPass.append(submit);
-      
-    $(".roomList").on("click",function(){
-      console.log("i'm being clicked")
-      list.append(enterPass)
-    })
 
+    $(".roomList").on("click",function(res){
+      console.log("i'm being clicked")
+      $(this).append(enterPass)
+    })
+      
     $("#room-submit").on("click",function(){
       const passcode = $("#enter-pass").val().trim();
    
@@ -97,6 +102,8 @@ $(function() {
   function roomParti(res) {
     
   }
+
+
 
 
   
