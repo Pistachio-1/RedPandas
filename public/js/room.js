@@ -35,7 +35,6 @@ $(function() {
       room_name: room,
       room_password: roomPass
     }
-    console.log(newRoom);
 
     $.post("/api/rooms/", newRoom).then(initializeRows)
   })
@@ -45,21 +44,60 @@ $(function() {
     const roomsToAdd = [];
     $.get("/api/rooms/", function(res){
       console.log(res);
-    for (var i = 0; i < res.length; i++) {
-      roomsToAdd.push(createNewRow(res[i]));
-    
-    $("#all-rooms").append(roomsToAdd);
-
-    function createNewRow() {
-      console.log(res);
-      var newTr = $("<ul>");
-      newTr.data("room", res);
-      newTr.append("<li>" + res[i].room_name.toUpperCase() + "</li>");
-      return newTr;
-    } 
+    if (res.length !==0){
+      for (let i = 0; i < res.length; i++) {
+        roomsToAdd.push(createNewRow(res[i]));
+      
+        $("#all-rooms").append(roomsToAdd);
+      }
+      return res;
     }
-
-  })
+    })
   }
- 
+  function createNewRow(res) {
+    const list = $("<div>");
+    list.attr("id", "roomList"+res.id)
+    list.addClass("roomList")
+    list.data("room", res.id);
+    list.append("<p>" + res.room_name.toUpperCase() + "</p>");
+
+    const enterPass = $("<form/>");
+    enterPass.attr("id", "enterPass");
+    enterPass.addClass("enterPass")
+
+    const form = $("<input/>", {type:"password"})
+    form.attr({name:"roomcode"});
+    form.attr({id:"enter-pass"});
+    form.addClass("form-control");
+    form.attr({placeholder:"Enter 4 digit password"});
+    const submit = $("<input/>", {type: "submit"})
+    submit.attr({id:"room-submit"});
+    submit.addClass("form-control");
+    submit.attr({value:"Submit"});
+
+    enterPass.prepend(form);
+    enterPass.append(submit);
+      
+    $(".roomList").on("click",function(){
+      console.log("i'm being clicked")
+      list.append(enterPass)
+    })
+
+    $("#room-submit").on("click",function(){
+      const passcode = $("#enter-pass").val().trim();
+   
+      if (passcode = res.room_password){
+        $("#room").hide();
+        $("#room-participants").show();
+        roomParti();
+      }
+    })
+    return list;
+  }
+  function roomParti(res) {
+    
+  }
+
+
+  
 })
