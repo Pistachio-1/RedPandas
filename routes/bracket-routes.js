@@ -18,7 +18,7 @@ module.exports = function(app) {
         db.Brackets.update(
           req.body, {
             where: {
-              user_name: "alliehahn"
+              user_name: "allison"
             }
           }).then(function(dbBrackets) {
           res.json(dbBrackets);

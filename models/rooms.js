@@ -4,8 +4,9 @@ module.exports = function(sequelize, DataTypes) {
     });
   
     Rooms.associate = function(models) {
-      Rooms.belongsToMany(models.RoomParticipants, {
-        through: models.User
+      console.log(models);
+      Rooms.belongsToMany(models.User, {
+        through: models.RoomParticipants
       });
     };
   
