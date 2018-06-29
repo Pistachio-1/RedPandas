@@ -49,6 +49,11 @@ color:#fff;
 color:#fff;
 }
 
+.results > p {
+	text-align: center;
+}
+
+
 header .row {
 margin-top:30vh;
 }
