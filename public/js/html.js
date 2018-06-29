@@ -1,7 +1,6 @@
 $(function () {
 
 	function matchesCallback(results, html_dest) {
-		console.log(results);
 		if (results.length > 0) {
 			results.forEach(r => {
 				console.log(r);
@@ -22,7 +21,6 @@ $(function () {
 				};
 
 				let matchStatus = away + " (" + away_goals + ") vs. (" + home_goals + ") " + home + "   " + status;
-				console.log(matchStatus);
 				html_dest.append(matchStatus + "<br>");
 			})
 		} else {
