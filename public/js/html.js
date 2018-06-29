@@ -117,13 +117,13 @@ $(function () {
 		const email = $("#email").val().trim();
 		const password = $("#pass_word").val().trim();
 		const confPass = $("#confirm-password").val().trim();
-		// if (!username || !email || !password || !confPass) {
-		// 	$("#tryAgain").append("Please fill out the whole form.")
-		// 	return;
-		// }
-		// else if (password !== confPass) {
-		// 	$("#tryAgain").append("Passwords do not match. Please try again.")
-		// }
+		if (!username || !email || !password || !confPass) {
+			$("#tryAgain").append("Please fill out the whole form.")
+			return;
+		}
+		else if (password !== confPass) {
+			$("#tryAgain").append("Passwords do not match. Please try again.")
+		}
 		const newUser = {
 			user_name: username,
 			email: email,

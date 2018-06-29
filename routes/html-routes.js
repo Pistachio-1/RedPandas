@@ -16,4 +16,7 @@ module.exports =function(app) {
         res.sendFile(path.join(__dirname, "../public/room.html"));
     });
     
+    app.get("/participantbracket", function(req,res) {
+        res.sendFile(path.join(__dirname, "../public/participantbrackets.html"));
+    });
 }
