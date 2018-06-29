@@ -54,13 +54,13 @@
                     <p class="divideOne">CURRENT MATCHES:</p>
                     <div class="row">
                         <div class="col-md-3">
-                            <img class="countryFlag" src="images/countryflags/england.png">
+                            <img class="countryFlag" id="awayFlag" src="images/countryflags/england.png">
                         </div>
                         <div class="col-md-4">
                             VERSUS
                         </div>
                         <div class="col-md-3">
-                            <img class="countryFlag" src="images/countryflags/belgium.png">
+                            <img class="countryFlag" id="homeFlag" src="images/countryflags/belgium.png">
                         </div>
                     </div>
                     <br>
@@ -88,9 +88,18 @@
 
     <div class="parallax" id="parallax2"></div>
     <div style="height:200px;background-color:smokewhite;font-size:18px">
+        <div class="container match-container" id="parallax2-content"></div>
         <div class="row">
-                <p class="divideOne">Games played:</p>
-                <div class="container" id="parallax2-content"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4 results">
+                <p>Today's Results</p>
+                <div id="todays-results"></div>
+            </div>
+            <div class="col-md-4 results">
+                <p>Tomorrow's Matches</p>
+                <div id="tomorrows-matches"></div>
+            </div>
+            <div class="col-md-2"></div>
         </div>
     </div>
     <div class="parallax" id="parallax3"></div>

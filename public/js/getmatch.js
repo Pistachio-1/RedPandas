@@ -5,7 +5,8 @@ const COUNTRYMATCHES = "/matches/country?fifa_code=";
 const TODAYMATCHES = "/matches/today";
 const ALLRESULTS = "/teams/results";
 const RESULTSBYGROUP = "/teams/group_results";
-const ALLTEAMS = "/teams/"
+const ALLTEAMS = "/teams/";
+const TOMORROWMATCHES = "/matches/tomorrow";
 
 async function getMatch(matchtype, fifa_code) {
     let qstring = WORLDCUPURL;
@@ -20,6 +21,7 @@ async function getMatch(matchtype, fifa_code) {
         case ALLRESULTS:
         case RESULTSBYGROUP:
         case ALLTEAMS:
+        case TOMORROWMATCHES:
             // these are ok
             qstring = qstring.concat(matchtype)
             break;
