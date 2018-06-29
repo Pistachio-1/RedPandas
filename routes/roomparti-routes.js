@@ -7,6 +7,16 @@ module.exports = function(app) {
             res.json(dbRoomParticipants);
         });
     });
+    app.get("/api/roomparticipants/:room", function(req,res){
+        db.RoomParticipants.findOne({
+            where:{
+                room: req.body.RoomId
+            }
+        }).then(function(dbRoomParticipants) {
+            console.log(dbRoomParticipants);
+            res.json(dbRoomParticipants);
+          });
+    })
     app.post("/api/roomparticipants/", function(req, res) {
         console.log(req.body);
         db.RoomParticipants.create(req.body).then(function(dbRoomParticipants) {
