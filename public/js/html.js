@@ -18,8 +18,21 @@ $(function () {
 						break;
 				};
 
-				let matchStatus = away + " (" + away_goals + ") vs. (" + home_goals + ") " + home + "   " + status;
-				html_dest.append(matchStatus + "<br>");
+				let matchStatus = away + " (" + away_goals + ") vs. (" + home_goals + ") " + home;
+
+				// add country flags
+				let imgAway = document.createElement("img");
+				imgAway.setAttribute("src", "images/countryflags/" + away.toLowerCase() + ".png");
+				imgAway.classList.add("countryFlag");
+
+				let imgHome = document.createElement("img");
+				imgHome.setAttribute("src", "images/countryflags/" + home.toLowerCase() + ".png");
+				imgHome.classList.add("countryFlag");
+
+				console.log(imgAway);
+				matchStatus = imgAway.outerHTML + " " + matchStatus + " " + imgHome.outerHTML + "   " + status;
+				console.log(matchStatus);
+				html_dest.append(matchStatus + "<br><br>");
 			})
 		} else {
 			html_dest.append("No matches available");
