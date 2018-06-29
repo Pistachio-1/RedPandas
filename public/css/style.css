@@ -254,3 +254,35 @@ text-shadow:1px 1px 1px #000;
 	border-color: #1CA347;
 }
 /*end of login css*/
+
+/* parallex one css */
+.divideOne {
+	font-family: 'Anton', sans-serif;
+	font-size: 25px;
+	padding-left: 40px;
+}
+
+.linkstobrackets {
+	font-family: 'Anton', sans-serif;
+	text-align: center;
+	font-size: 30px;
+	padding-top: 40px;	
+}
+
+.homelinks {
+	color: black;
+}
+
+.firstRow {
+	height:200px;
+	font-size:18px;
+}
+
+.countryFlag {
+	max-width: 50px;
+	max-height: 50px;
+}
+
+.countrynames {
+	text-align: center;
+}

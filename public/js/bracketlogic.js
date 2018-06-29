@@ -7,7 +7,8 @@ $(".round16A").click(function(){
     $.ajax ({
         url:'/api/brackets/',
         data: {round16_game_1: teamA1,
-        user_name: "alliehahn"},
+        id: 2,
+        user_name: "allie"},
         type: 'post',
         success: function(response) {
         },

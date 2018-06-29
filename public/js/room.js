@@ -41,8 +41,6 @@ $(function() {
   })
 }
   
-  
-    
   function initializeRows() {
     const roomsToAdd = [];
     $.get("/api/rooms/", function(res){
