@@ -5,6 +5,7 @@ $(function() {
   $("#joinRoom").on("click",function(event){ 
     $("#all-rooms").show();
     initializeRows();
+    $("#joinRoom").off();
   })
 
   $("#createRoom").on("click",function(event){
@@ -36,7 +37,11 @@ $(function() {
       room_password: roomPass
     }
 
-    $.post("/api/rooms/", newRoom).then(initializeRows)
+    console.log(newRoom);
+    $("#all-rooms").append(newRoom)
+
+    $.post("/api/rooms/", newRoom);
+    $(location).attr('href', '/bracket')
   })
 }
   
@@ -59,44 +64,46 @@ $(function() {
     list.attr("id", "roomList"+res.id)
     list.addClass("roomList")
     list.data("room", res.id);
-    list.append("<p>" + res.room_name.toUpperCase() + "</p>");
+    list.append("<p>" + res.room_name.toUpperCase() + "</p>")
 
-    const enterPass = $("<form/>");
-    enterPass.attr("id", "enterPass");
-    enterPass.addClass("enterPass")
+    // const enterPass = $("<form/>");
+    // //enterPass.attr("id", "enterPass");
+    // enterPass.addClass("enterPass")
 
-    const form = $("<input/>", {type:"password"})
-    form.attr({name:"roomcode"});
-    form.attr({id:"enter-pass"});
-    form.addClass("form-control");
-    form.attr({placeholder:"Enter 4 digit password"});
-    const submit = $("<input/>", {type: "submit"})
-    submit.attr({id:"room-submit"});
-    submit.addClass("form-control");
-    submit.attr({value:"Submit"});
+    // const form = $("<input/>", {type:"password"})
+    // form.attr({name:"roomcode"});
+    // form.attr({id:"enter-pass"+res.id});
+    // form.addClass("form-control");
+    // form.attr({placeholder:"Enter 4 digit password"});
+    // const submit = $("<input/>", {type: "submit"})
+    // submit.attr({id:"room-submit"+res.id});
+    // submit.addClass("form-control");
+    // submit.attr({value:"Submit"});
 
-    enterPass.prepend(form);
-    enterPass.append(submit);
+    // enterPass.prepend(form);
+    // enterPass.append(submit);
+
+    $(".roomList").on("click",function(res){
+      //INSERT CORRECT LOCATION FOR CORROSPONDING ROOM
+      $(location).attr('href', '/bracket')
+    })
       
-    $(".roomList").on("click",function(){
-      console.log("i'm being clicked")
-      list.append(enterPass)
-    })
-
-    $("#room-submit").on("click",function(){
-      const passcode = $("#enter-pass").val().trim();
+    // $("#room-submit").on("click",function(){
+    //   const passcode = $("#enter-pass").val().trim();
    
-      if (passcode = res.room_password){
-        $("#room").hide();
-        $("#room-participants").show();
-        roomParti();
-      }
-    })
+    //   if (passcode = res.room_password){
+    //     $("#room").hide();
+    //     $("#room-participants").show();
+    //     roomParti();
+    //   }
+    // })
     return list;
   }
   function roomParti(res) {
     
   }
+
+
 
 
   
