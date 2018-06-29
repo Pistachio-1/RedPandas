@@ -1,23 +1,27 @@
 $(function () {
 
-	let html_dest = $("#parallax2-content");
-	function matchesCallback(resp) {
-		console.log(resp);
-		html_dest.val = "";
-		resp.forEach(r => {
-			console.log(r);
-			let away = r.away_team.country;
-			let away_goals = r.away_team.goals;
-			let home = r.home_team.country;
-			let home_goals = r.home_team.goals;
-			let status = (r.status === "completed") ? "FINAL" : r.status;
+	function matchesCallback(results, html_dest) {
+		console.log(results);
+		if (results.length > 0) {
+			results.forEach(r => {
+				console.log(r);
+				let away = r.away_team.country;
+				let away_goals = r.away_team.goals;
+				let home = r.home_team.country;
+				let home_goals = r.home_team.goals;
+				let status = (r.status === "completed") ? "FINAL" : r.status;
 
-			let matchStatus = away + " (" + away_goals + ") vs. (" + home_goals + ") " + home + "   " + status;
-			console.log(matchStatus);
-			html_dest.append(matchStatus + "<br>");
-		});
+				let matchStatus = away + " (" + away_goals + ") vs. (" + home_goals + ") " + home + "   " + status;
+				console.log(matchStatus);
+				html_dest.append(matchStatus + "<br>");
+			})
+		} else {
+			html_dest.append("No matches available");
+		}
 	};
-	getMatch(TODAYMATCHES, null).then(matchesCallback);
+	let html_dest = $("#todays-results");
+	getMatch(TODAYMATCHES, null)
+		.then(results => matchesCallback(results, $("#todays-results")));
 
 
 	$("#login-form").show();
