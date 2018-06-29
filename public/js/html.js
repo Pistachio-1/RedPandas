@@ -55,63 +55,54 @@ $(function () {
 	$("#login-submit").on("click", function () {
 		const username = $("#username").val().trim();
 		const password = $("#password").val().trim();
+		$.get("/api/users/"+username, function(data){
+			console.log(data)
+			if(err){
+				throw err;
+			}
+			else if (username === data.user_name && password === data.user_password){
+				$("#welcomeUser").append("Welcome, " + username);
+			}
+			else {
+				$("#incorrectUserPass").append("Username or Password is incorrect. Please try again")
+			}
 
-		function getLogin(username) {
-			$.get("/api/users/" + username, function (data) {
-				if (username === data.user_name && password === data.user_password) {
-					$("#incorrectUserPass").append("Welcome, " + username);
-				}
-				else {
-					$("#incorrectUserPass").append("Username or Password is incorrect. Please try again")
-				}
-
-			})
-		}
-		getLogin();
-	})
-
+		})
 	
+	})
 	
 	$("#register-submit").on("click", function(){
 		const username = $("#user_name").val().trim();
-
 		const email = $("#email").val().trim();
 		const password = $("#pass_word").val().trim();
 		const confPass = $("#confirm-password").val().trim();
-		if (!username || !email || !password || !confPass) {
-			$("#tryAgain").append("Please fill out the whole form.")
-			return;
-		}
-		else if (password !== confPass) {
-			$("#tryAgain").append("Passwords do not match. Please try again.")
-		}
+		// if (!username || !email || !password || !confPass) {
+		// 	$("#tryAgain").append("Please fill out the whole form.")
+		// 	return;
+		// }
+		// else if (password !== confPass) {
+		// 	$("#tryAgain").append("Passwords do not match. Please try again.")
+		// }
 		const newUser = {
 			user_name: username,
 			email: email,
 			user_password: password
 		};
 		console.log(newUser)
-
-		function register(newUser) {
-
-			$.ajax ({
-				url:'/api/users/',
-				data: {	
-					user_name: username,
-					email: email,
-					user_password: password
-					},
-				type: 'post',
-				success: function(response) {
-					alert("data sent response is "+ response)
-				},
-				error : function(e) {
-					alert("data not sent")
+	
+		$.post("api/users/", newUser)
+			.then($.get("/api/users/"+username, function(res){
+				if(err){
+					throw err;
 				}
-			});
-		}
-
-
-		register();
+				else {
+					console.log(res)
+					$("#welcomeUser").append("Welcome, " + res.user_name);
+				}
+			})
+			
+		)
 	});
+
+
 });
