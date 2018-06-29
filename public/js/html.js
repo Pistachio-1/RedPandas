@@ -1,9 +1,7 @@
 $(function () {
-
 	function matchesCallback(results, html_dest) {
 		if (results.length > 0) {
 			results.forEach(r => {
-				console.log(r);
 				let away = r.away_team.country;
 				let away_goals = r.away_team.goals;
 				let home = r.home_team.country;
@@ -33,6 +31,21 @@ $(function () {
 
 	getMatch(TOMORROWMATCHES, null)
 		.then(results => matchesCallback(results, $("#tomorrows-matches")));
+	
+	// getMatch(CURRENTMATCHES, null)
+	// 	.then(results => matchesCallback(results, $("#current-results")));
+	const mockResults = [{
+		"away_team" : {
+			"country": "England",
+			"goals": 7
+		},
+		"home_team" : {
+			"country" : "Portugal",
+			"goals" : 5
+		},
+		"status": "future"
+	}];
+	matchesCallback(mockResults, $("#current-results"));
 
 
 	$("#login-form").show();
