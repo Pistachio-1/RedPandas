@@ -9,7 +9,17 @@ $(function () {
 				let away_goals = r.away_team.goals;
 				let home = r.home_team.country;
 				let home_goals = r.home_team.goals;
-				let status = (r.status === "completed") ? "FINAL" : r.status;
+				switch (r.status) {
+					case "completed":
+						status = "FINAL";
+						break;
+					case "future":
+						status = "PENDING";
+						break;
+					default:
+						status = r.status;
+						break;
+				};
 
 				let matchStatus = away + " (" + away_goals + ") vs. (" + home_goals + ") " + home + "   " + status;
 				console.log(matchStatus);
@@ -19,9 +29,12 @@ $(function () {
 			html_dest.append("No matches available");
 		}
 	};
-	let html_dest = $("#todays-results");
+	// let html_dest = $("#todays-results");
 	getMatch(TODAYMATCHES, null)
 		.then(results => matchesCallback(results, $("#todays-results")));
+
+	getMatch(TOMORROWMATCHES, null)
+		.then(results => matchesCallback(results, $("#tomorrows-matches")));
 
 
 	$("#login-form").show();
