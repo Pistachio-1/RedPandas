@@ -1,23 +1,51 @@
 $(function () {
 
-	let html_dest = $("#parallax2-content");
-	function matchesCallback(resp) {
-		console.log(resp);
-		html_dest.val = "";
-		resp.forEach(r => {
-			console.log(r);
-			let away = r.away_team.country;
-			let away_goals = r.away_team.goals;
-			let home = r.home_team.country;
-			let home_goals = r.home_team.goals;
-			let status = (r.status === "completed") ? "FINAL" : r.status;
+	function matchesCallback(results, html_dest) {
+		if (results.length > 0) {
+			results.forEach(r => {
+				console.log(r);
+				let away = r.away_team.country;
+				let away_goals = r.away_team.goals;
+				let home = r.home_team.country;
+				let home_goals = r.home_team.goals;
+				switch (r.status) {
+					case "completed":
+						status = "FINAL";
+						break;
+					case "future":
+						status = "PENDING";
+						break;
+					default:
+						status = r.status;
+						break;
+				};
 
-			let matchStatus = away + " (" + away_goals + ") vs. (" + home_goals + ") " + home + "   " + status;
-			console.log(matchStatus);
-			html_dest.append(matchStatus + "<br>");
-		});
+				let matchStatus = away + " (" + away_goals + ") vs. (" + home_goals + ") " + home;
+
+				// add country flags
+				let imgAway = document.createElement("img");
+				imgAway.setAttribute("src", "images/countryflags/" + away.toLowerCase() + ".png");
+				imgAway.classList.add("countryFlag");
+
+				let imgHome = document.createElement("img");
+				imgHome.setAttribute("src", "images/countryflags/" + home.toLowerCase() + ".png");
+				imgHome.classList.add("countryFlag");
+
+				console.log(imgAway);
+				matchStatus = imgAway.outerHTML + " " + matchStatus + " " + imgHome.outerHTML + "   " + status;
+				console.log(matchStatus);
+				html_dest.append(matchStatus + "<br><br>");
+			})
+		} else {
+			html_dest.append("No matches available");
+		}
 	};
-	getMatch(TODAYMATCHES, null).then(matchesCallback);
+
+	getMatch(TODAYMATCHES, null)
+		.then(results => matchesCallback(results, $("#todays-results")));
+
+	getMatch(TOMORROWMATCHES, null)
+		.then(results => matchesCallback(results, $("#tomorrows-matches")));
 
 
 	$("#login-form").show();
