@@ -64,39 +64,39 @@ $(function() {
     list.attr("id", "roomList"+res.id)
     list.addClass("roomList")
     list.data("room", res.id);
-    list.append("<p>" + res.room_name.toUpperCase() + "</p>");
+    list.append("<p>" + res.room_name.toUpperCase() + "</p>")
 
-    const enterPass = $("<form/>");
-    //enterPass.attr("id", "enterPass");
-    enterPass.addClass("enterPass")
+    // const enterPass = $("<form/>");
+    // //enterPass.attr("id", "enterPass");
+    // enterPass.addClass("enterPass")
 
-    const form = $("<input/>", {type:"password"})
-    form.attr({name:"roomcode"});
-    form.attr({id:"enter-pass"+res.id});
-    form.addClass("form-control");
-    form.attr({placeholder:"Enter 4 digit password"});
-    const submit = $("<input/>", {type: "submit"})
-    submit.attr({id:"room-submit"+res.id});
-    submit.addClass("form-control");
-    submit.attr({value:"Submit"});
+    // const form = $("<input/>", {type:"password"})
+    // form.attr({name:"roomcode"});
+    // form.attr({id:"enter-pass"+res.id});
+    // form.addClass("form-control");
+    // form.attr({placeholder:"Enter 4 digit password"});
+    // const submit = $("<input/>", {type: "submit"})
+    // submit.attr({id:"room-submit"+res.id});
+    // submit.addClass("form-control");
+    // submit.attr({value:"Submit"});
 
-    enterPass.prepend(form);
-    enterPass.append(submit);
+    // enterPass.prepend(form);
+    // enterPass.append(submit);
 
     $(".roomList").on("click",function(res){
-      console.log("i'm being clicked")
-      $(this).append(enterPass)
+      //INSERT CORRECT LOCATION FOR CORROSPONDING ROOM
+      $(location).attr('href', '/bracket')
     })
       
-    $("#room-submit").on("click",function(){
-      const passcode = $("#enter-pass").val().trim();
+    // $("#room-submit").on("click",function(){
+    //   const passcode = $("#enter-pass").val().trim();
    
-      if (passcode = res.room_password){
-        $("#room").hide();
-        $("#room-participants").show();
-        roomParti();
-      }
-    })
+    //   if (passcode = res.room_password){
+    //     $("#room").hide();
+    //     $("#room-participants").show();
+    //     roomParti();
+    //   }
+    // })
     return list;
   }
   function roomParti(res) {
