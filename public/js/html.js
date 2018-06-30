@@ -14,6 +14,9 @@ $(function () {
 					case "future":
 						status = "PENDING";
 						break;
+					case "in progress":
+						status = "IN PROGRESS";
+						break;
 					default:
 						status = r.status;
 						break;
