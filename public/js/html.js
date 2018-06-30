@@ -1,9 +1,8 @@
 $(function () {
-
 	function matchesCallback(results, html_dest) {
 		if (results.length > 0) {
+			let status = "";
 			results.forEach(r => {
-				console.log(r);
 				let away = r.away_team.country;
 				let away_goals = r.away_team.goals;
 				let home = r.home_team.country;
@@ -15,12 +14,20 @@ $(function () {
 					case "future":
 						status = "PENDING";
 						break;
+					case "in progress":
+						status = "TIME: " + r.time;
+						break;
 					default:
 						status = r.status;
 						break;
 				};
 
-				let matchStatus = away + " (" + away_goals + ") vs. (" + home_goals + ") " + home;
+				let matchStatus = "";
+				if (status === "PENDING") {
+					matchStatus = away + " VS. " + " " + home;
+				} else {
+					matchStatus = away + " (" + away_goals + ") vs. (" + home_goals + ") " + home;
+				}
 
 				// add country flags
 				let imgAway = document.createElement("img");
@@ -31,22 +38,22 @@ $(function () {
 				imgHome.setAttribute("src", "images/countryflags/" + home.toLowerCase() + ".png");
 				imgHome.classList.add("countryFlag");
 
-				console.log(imgAway);
 				matchStatus = imgAway.outerHTML + " " + matchStatus + " " + imgHome.outerHTML + "   " + status;
-				console.log(matchStatus);
 				html_dest.append(matchStatus + "<br><br>");
 			})
 		} else {
-			html_dest.append("No matches available");
+			html_dest.append("No matches in progress at this time.");
 		}
 	};
-
+	// let html_dest = $("#todays-results");
 	getMatch(TODAYMATCHES, null)
 		.then(results => matchesCallback(results, $("#todays-results")));
 
 	getMatch(TOMORROWMATCHES, null)
 		.then(results => matchesCallback(results, $("#tomorrows-matches")));
 
+	getMatch(CURRENTMATCHES, null)
+		.then(results => matchesCallback(results, $("#current-results")));
 
 	$("#login-form").show();
 	$("#register-form").hide();
@@ -83,12 +90,12 @@ $(function () {
 	$("#login-submit").on("click", function () {
 		const username = $("#username").val().trim();
 		const password = $("#password").val().trim();
-		$.get("/api/users/"+username, function(data){
+		$.get("/api/users/" + username, function (data) {
 			console.log(data)
-			if(err){
+			if (err) {
 				throw err;
 			}
-			else if (username === data.user_name && password === data.user_password){
+			else if (username === data.user_name && password === data.user_password) {
 				$("#welcomeUser").append("Welcome, " + username);
 			}
 			else {
@@ -96,10 +103,10 @@ $(function () {
 			}
 
 		})
-	
+
 	})
-	
-	$("#register-submit").on("click", function(){
+
+	$("#register-submit").on("click", function () {
 		const username = $("#user_name").val().trim();
 		const email = $("#email").val().trim();
 		const password = $("#pass_word").val().trim();
@@ -117,10 +124,10 @@ $(function () {
 			user_password: password
 		};
 		console.log(newUser)
-	
+
 		$.post("api/users/", newUser)
-			.then($.get("/api/users/"+username, function(res){
-				if(err){
+			.then($.get("/api/users/" + username, function (res) {
+				if (err) {
 					throw err;
 				}
 				else {
@@ -128,8 +135,8 @@ $(function () {
 					$("#welcomeUser").append("Welcome, " + res.user_name);
 				}
 			})
-			
-		)
+
+			)
 	});
 
 
