@@ -1,7 +1,10 @@
-DROP DATABASE IF EXISTS worldcup_db;
-CREATE DATABASE worldcup_db;
-USE worldcup_db;
+-- DROP DATABASE IF EXISTS worldcup_db;
+-- CREATE DATABASE worldcup_db;
+-- USE worldcup_db;
 
+USE zh3n7ngbgg0cgmms;
+
+DROP TABLE users IF EXISTS
 CREATE TABLE users
 (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -10,18 +13,21 @@ CREATE TABLE users
     user_password VARCHAR(20) NOT NULL
 );
 
+DROP TABLE rooms IF EXISTS
 CREATE TABLE rooms
 (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	room_name VARCHAR(30) NOT NULL
 );
 
+DROP TABLE room_participants IF EXISTS
 CREATE TABLE room_participants
 (
     room_name INT(12) NOT NULL,
     user_name VARCHAR(30) NOT NULL
 );
 
+DROP TABLE bracket IF EXISTS
 CREATE TABLE bracket
 (
     user_name VARCHAR(30) NOT NULL,
