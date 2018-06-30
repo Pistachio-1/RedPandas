@@ -271,6 +271,7 @@ text-shadow:1px 1px 1px #000;
 	font-family: 'Anton', sans-serif;
 	font-size: 25px;
 	padding-left: 40px;
+	padding-top: 10px;
 }
 
 .linkstobrackets {
@@ -290,8 +291,8 @@ text-shadow:1px 1px 1px #000;
 }
 
 .countryFlag {
-	max-width: 50px;
-	max-height: 50px;
+	max-width: 40px;
+	max-height: 40px;
 }
 
 .countrynames {
