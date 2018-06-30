@@ -1,6 +1,16 @@
 module.exports = function(sequelize, DataTypes) {
     const Brackets = sequelize.define("Brackets", {
-        user_name : DataTypes.STRING,
+      id: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+ 
         round16_game_1 : DataTypes.STRING,
         round16_game_2 : DataTypes.STRING,
         round16_game_3 : DataTypes.STRING,
@@ -17,12 +27,10 @@ module.exports = function(sequelize, DataTypes) {
         round4_game_2 : DataTypes.STRING,
         champion : DataTypes.STRING
     });
-  
     Brackets.associate = function(models) {
-      Brackets.belongsTo(models.Rooms, {
-        through: models.Rooms
-      });
+       console.log(models);
+      Brackets.belongsTo(models.Users);
     };
-  
+    
     return Brackets
 };

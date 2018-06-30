@@ -1,5 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
     const User = sequelize.define("User", {
+      id: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false
+      },
       user_name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -21,11 +27,14 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
     User.associate = function(models) {
-      console.log(models)
-      User.belongsToMany(models.Rooms, {
-        through: models.RoomParticipants
-      });
+      console.log(models);
+      User.hasMany(models.Brackets);
+      User.belongsToMany(Rooms);
     };
+    // , {
+    //   as: "brackets", 
+    //   foreignKey: "userId",
+    // }
     return User;
   };
   
