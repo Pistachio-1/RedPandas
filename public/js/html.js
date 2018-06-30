@@ -15,7 +15,7 @@ $(function () {
 						status = "PENDING";
 						break;
 					case "in progress":
-						status = "IN PROGRESS";
+						status = "TIME: " + r.time;
 						break;
 					default:
 						status = r.status;
@@ -38,9 +38,7 @@ $(function () {
 				imgHome.setAttribute("src", "images/countryflags/" + home.toLowerCase() + ".png");
 				imgHome.classList.add("countryFlag");
 
-				console.log(imgAway);
 				matchStatus = imgAway.outerHTML + " " + matchStatus + " " + imgHome.outerHTML + "   " + status;
-				console.log(matchStatus);
 				html_dest.append(matchStatus + "<br><br>");
 			})
 		} else {
