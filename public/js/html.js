@@ -57,14 +57,14 @@ $(function () {
 
 	$("#login-form").show();
 	$("#register-form").hide();
-	$('#login-form-link').click(function (event) {
+	$('#login-form-link').click( (event) => {
 		$("#register-form").hide();
 		$("#login-form").show();
 		$('#register-form-link').removeClass('active');
 		$(this).addClass('active');
 		event.preventDefault();
 	});
-	$('#register-form-link').click(function (event) {
+	$('#register-form-link').click( (event) => {
 		$("#login-form").hide();
 		$("#register-form").show();
 		$('#login-form-link').removeClass('active');
@@ -75,22 +75,22 @@ $(function () {
 	const modal = document.getElementById('myModal');
 	const login = document.getElementById("login-start");
 	const span = document.getElementsByClassName("close")[0];
-	login.onclick = function () {
+	login.onclick =  () => {
 		modal.style.display = "block";
 	}
-	span.onclick = function () {
+	span.onclick =  () => {
 		modal.style.display = "none";
 	}
-	window.onclick = function (event) {
+	window.onclick =  (event) => {
 		if (event.target == modal) {
 			modal.style.display = "none";
 		}
 	}
 
-	$("#login-submit").on("click", function () {
+	$("#login-submit").on("click",  () => {
 		const username = $("#username").val().trim();
 		const password = $("#password").val().trim();
-		$.get("/api/users/" + username, function (data) {
+		$.get("/api/users/" + username,  (data) => {
 			console.log(data)
 			if (err) {
 				throw err;
@@ -106,7 +106,7 @@ $(function () {
 
 	})
 
-	$("#register-submit").on("click", function () {
+	$("#register-submit").on("click",  () => {
 		const username = $("#user_name").val().trim();
 		const email = $("#email").val().trim();
 		const password = $("#pass_word").val().trim();
@@ -126,17 +126,21 @@ $(function () {
 		console.log(newUser)
 
 		$.post("api/users/", newUser)
-			.then($.get("/api/users/" + username, function (res) {
-				if (err) {
-					throw err;
-				}
-				else {
-					console.log(res)
-					$("#welcomeUser").append("Welcome, " + res.user_name);
-				}
-			})
+			.then(function() {
+				window.location.href = "/room";
+			  });
+				
+				// $.get("/api/users/" + username,  (res) => {
+				// if (err) {
+				// 	throw err;
+				// }
+				// else {
+				// 	console.log(res)
+				// 	$("#welcomeUser").append("Welcome, " + res.user_name);
+				// }
+			//})
 
-			)
+			
 	});
 
 

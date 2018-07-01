@@ -2,20 +2,23 @@ $(function() {
   $("#all-rooms").hide();
   $("#create-room").hide();
 
-  $("#joinRoom").on("click",function(event){ 
+  $("#joinRoom").on("click",(event)=> {
     $("#all-rooms").show();
     initializeRows();
     $("#joinRoom").off();
+    // $.get("/api/roomslist", (res) => {
+    //   console.log(res)
+    // })
   })
 
-  $("#createRoom").on("click",function(event){
+  $("#createRoom").on("click",(event) => {
     $("#create-room").show();
     room();
   });
 
-  function room() {  
+   function room() {
     
-    $("#room-submit").on("click", function(event){
+    $("#room-submit").on("click", (event) => {
       const room = $("#room_name").val().trim();
       const roomPass = $("#room_pass").val().trim();
       const roomConPass = $("#room_confirmpass").val().trim();
@@ -42,12 +45,12 @@ $(function() {
 
     $.post("/api/rooms/", newRoom);
     $(location).attr('href', '/bracket')
-  })
-}
+    })
+  }
   
   function initializeRows() {
     const roomsToAdd = [];
-    $.get("/api/rooms/", function(res){
+    $.get("/api/rooms/", (res)=>{
       console.log(res);
     if (res.length !==0){
       for (let i = 0; i < res.length; i++) {
@@ -57,6 +60,9 @@ $(function() {
       }
       return res;
     }
+    else if (res.length === 0){
+      $("#all-rooms").append("<br><p> There are no rooms right now...Be the first to make one!</p>")
+    }
     })
   }
   function createNewRow(res) {
@@ -65,6 +71,7 @@ $(function() {
     list.addClass("roomList")
     list.data("room", res.id);
     list.append("<p>" + res.room_name.toUpperCase() + "</p>")
+    list.append("<ul class=user>"+res.User.user_name+"</ul>")
 
     // const enterPass = $("<form/>");
     // //enterPass.attr("id", "enterPass");
@@ -83,7 +90,7 @@ $(function() {
     // enterPass.prepend(form);
     // enterPass.append(submit);
 
-    $(".roomList").on("click",function(res){
+    $(".user").on("click",function(res){
       //INSERT CORRECT LOCATION FOR CORROSPONDING ROOM
       $(location).attr('href', '/bracket')
     })
