@@ -31,13 +31,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   });
   User.associate = function(models) { 
-    User.belongsToMany(models.Rooms, 
-      {
-        through:models.Brackets
-      },
-      {
-        onDelete: "cascade"
-      })
+    User.belongsToMany(models.Rooms, {through:models.Brackets},{
+      onDelete: "cascade"
+    })
   }
   return User;
 };

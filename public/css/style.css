@@ -46,15 +46,28 @@ body, html {
 	font-weight: bold;
 	opacity: 1;
 }
-.roomList > p:hover {
-	text-decoration: underline;
+.room > button {
+	background-color: green;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 10px 10px;
+	text-transform: uppercase;
+	border-color: #1CB94E;
+	border-radius: 4px;
+}
+.room > button:hover {
+	background-color: #1CA347
 }
 .createRoom {
 	padding: 10px;
 	max-width: 600px;
 	margin-left: 50px;
 }
-.allRooms > .roomList > p:hover {
+
+.allRooms > .roomList > ul:hover {
 	color: #fff;
 	text-decoration: underline;
 }
