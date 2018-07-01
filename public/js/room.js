@@ -60,6 +60,9 @@ $(function() {
       }
       return res;
     }
+    else if (res.length === 0){
+      $("#all-rooms").append("<br><p> There are no rooms right now...Be the first to make one!</p>")
+    }
     })
   }
   function createNewRow(res) {

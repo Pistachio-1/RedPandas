@@ -39,7 +39,7 @@ body, html {
 /* Room CSS */
 .room {
 	margin: auto;
-	padding: 35px 50px;
+	padding: 35px 100px;
 	color:white;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 	font-size-adjust: 5px;

@@ -126,17 +126,21 @@ $(function () {
 		console.log(newUser)
 
 		$.post("api/users/", newUser)
-			.then($.get("/api/users/" + username,  (res) => {
-				if (err) {
-					throw err;
-				}
-				else {
-					console.log(res)
-					$("#welcomeUser").append("Welcome, " + res.user_name);
-				}
-			})
+			.then(function() {
+				window.location.href = "/room";
+			  });
+				
+				// $.get("/api/users/" + username,  (res) => {
+				// if (err) {
+				// 	throw err;
+				// }
+				// else {
+				// 	console.log(res)
+				// 	$("#welcomeUser").append("Welcome, " + res.user_name);
+				// }
+			//})
 
-			)
+			
 	});
 
 
