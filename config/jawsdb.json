@@ -2,7 +2,7 @@
         "username": "h8gfl2ulbf1g2xrc",
         "password": "d3w2ib9j8dk4nnfd",
         "database": "zh3n7ngbgg0cgmms",
-        "host": "h8gfl2ulbf1g2xrc:d3w2ib9j8dk4nnfd@ocvwlym0zv3tcn68.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/zh3n7ngbgg0cgmms",
+        "host": "ocvwlym0zv3tcn68.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         "port": 3306,
         "dialect": "mysql"
 }
