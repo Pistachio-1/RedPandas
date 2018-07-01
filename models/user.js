@@ -1,40 +1,43 @@
-module.exports = function(sequelize, DataTypes) {
-    const User = sequelize.define("User", {
-      id: {
-        type: DataTypes.UUID,
-        primaryKey: true,
-        defaultValue: DataTypes.UUIDV4,
-        allowNull: false
-      },
-      user_name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
-      },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-
-      },
-      user_password: {
-        type: DataTypes.STRING,
-       allowNull: false,
-       validate: {
-        len: [7,14]
-        }
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define("User", {
+    user_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
       }
-    });
-    User.associate = function(models) {
-      console.log(models);
-      User.hasMany(models.Brackets);
-      User.belongsToMany(Rooms);
-    };
-    // , {
-    //   as: "brackets", 
-    //   foreignKey: "userId",
-    // }
-    return User;
-  };
-  
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+
+    },
+    user_password: {
+      type: DataTypes.STRING,
+     allowNull: false,
+     validate: {
+      len: [7,14]
+      }
+    },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+  },
+  updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+  }
+  });
+  User.associate = function(models) { 
+    User.belongsToMany(models.Rooms, 
+      {
+        through:models.Brackets
+      },
+      {
+        onDelete: "cascade"
+      })
+  }
+  return User;
+};

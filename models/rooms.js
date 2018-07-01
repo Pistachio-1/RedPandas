@@ -1,26 +1,27 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
   const Rooms = sequelize.define("Rooms", {
-    id: {
-      type: DataTypes.UUID,
-      primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
-      allowNull: false
-    },
-    room_name: DataTypes.STRING,
-    room_password: DataTypes.INTEGER(4),
-    room_participants:{
-      type: DataTypes.ARRAY(DataTypes.STRING),
-    }
-    
+      id: {
+          type: DataTypes.UUID,
+          primaryKey: true,
+          defaultValue: DataTypes.UUIDV4,
+          allowNull: false
+        },
+        room_name: DataTypes.STRING,
+        room_password: DataTypes.INTEGER(4),
   });
-  
-    Rooms.associate = function(models) {
-      Rooms.hasMany(models.User , {
-        onDelete: "CASCADE",
-        as: "user_id",
-        foreignKey: {name: "userId", allowNull:false}
-      })
-    };
-   
-    return Rooms
+
+Rooms.associate = function(models){
+  Rooms.belongsTo(models.User,
+    {
+      through:models.Brackets
+    },
+    {
+    foreignKey: 
+      {
+        allowNull: false
+      }
+    });
+};
+
+  return Rooms
 };

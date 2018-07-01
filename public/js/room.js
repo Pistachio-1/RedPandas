@@ -2,20 +2,20 @@ $(function() {
   $("#all-rooms").hide();
   $("#create-room").hide();
 
-  $("#joinRoom").on("click",function(event){ 
+  $("#joinRoom").on("click",(event)=> {
     $("#all-rooms").show();
     initializeRows();
     $("#joinRoom").off();
   })
 
-  $("#createRoom").on("click",function(event){
+  $("#createRoom").on("click",(event) => {
     $("#create-room").show();
     room();
   });
 
-  function room() {  
+   room() => {
     
-    $("#room-submit").on("click", function(event){
+    $("#room-submit").on("click", (event) => {
       const room = $("#room_name").val().trim();
       const roomPass = $("#room_pass").val().trim();
       const roomConPass = $("#room_confirmpass").val().trim();
@@ -45,9 +45,9 @@ $(function() {
   })
 }
   
-  function initializeRows() {
+   initializeRows() => {
     const roomsToAdd = [];
-    $.get("/api/rooms/", function(res){
+    $.get("/api/rooms/", (res)=> {
       console.log(res);
     if (res.length !==0){
       for (let i = 0; i < res.length; i++) {
