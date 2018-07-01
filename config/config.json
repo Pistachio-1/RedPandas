@@ -1,7 +1,7 @@
 {
     "development": {
       "username": "root",
-      "password": "ASK4lyfe!",
+      "password": "",
       "database": "worldcup_db",
       "host": "127.0.0.1",
       "port": 3306,

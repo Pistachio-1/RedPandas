@@ -10,7 +10,6 @@ var jawsdb = require(__dirname + "/../config/jawsdb.json");
 var db = {};
 
 if (process.env.JAWSDB_URL) {
-  console.log(jawsdb);
   var sequelize = new Sequelize(jawsdb.database, jawsdb.username, jawsdb.password, jawsdb);
 } else {
   if (config.use_env_variable) {

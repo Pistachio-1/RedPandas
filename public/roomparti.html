@@ -17,7 +17,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 </head>
 <body class="background">
-
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header"><a class="navbar-brand navbar-link" target="blank">
@@ -34,45 +33,10 @@
             </div>
         </div>
     </nav>
-
-
-<div> 
-    <div class="room" id="room">
-        <h1>JOIN A ROOM</h1>
-        <p>Join a room to compete with your friends or other users.</p>
-        <button class="roomLink" id="joinRoom"><i class="fas fa-plus"></i>  Check out all the rooms</button>
-        <div class="allRooms" id="all-rooms"></div>
-        <!-- <div class="listUser"></div> -->
-
-        <h1>CREATE A ROOM</h1>
-        <p>Create your own room and invite your friends</p>
-        <button class="roomLink" id = "createRoom"><i class="fas fa-plus-circle"></i>  Create your own!</button>
-        <div class="createRoom" id="create-room">
-            <form id="create-form"  role="form" style="display: block;">
-                <div id="inputAlert"></div>
-                <div class="form-group">
-                    <input type="text" name="roomname" id="room_name" tabindex="1" class="form-control" placeholder="Room Name" value="">
-                </div>
-                <div class="form-group">
-                    <input type="password" name="roompassword" id="room_pass" tabindex="2" class="form-control" placeholder="Password: Enter a 4 digit number">
-                </div>
-                <div class="form-group">
-                    <input type="password" name="room-confirmpass" id="room_confirmpass" tabindex="3" class="form-control" placeholder="Confirm Password: Re-enter a 4 digit number">
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <input type="submit" name="room-submit" id="room-submit" tabindex="4" class="form-control btn btn-register" value="Submit">
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+    <div id="log">
+        
     </div>
 
-
-    </div>
-</div>
-<script src="js/room.js"></script>
+    <script src="./js/roomparti.js"></script>
 </body>
 </html>
