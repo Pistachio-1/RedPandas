@@ -90,8 +90,7 @@ $(function () {
 				listOption.text(data[i].room_name);
 				rowsToAdd.push(listOption);
 			}
-			roomSelect.empty();
-			console.log(rowsToAdd);
+			// roomSelect.empty();
 			console.log(roomSelect);
 			roomSelect.append(rowsToAdd);
 			roomSelect.val(data.id);
