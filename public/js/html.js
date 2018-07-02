@@ -45,7 +45,6 @@ $(function () {
 			html_dest.append("No matches in progress at this time.");
 		}
 	};
-	// let html_dest = $("#todays-results");
 	getMatch(TODAYMATCHES, null)
 		.then(results => matchesCallback(results, $("#todays-results")));
 
@@ -71,25 +70,7 @@ $(function () {
 		$(this).addClass('active');
 		event.preventDefault();
 
-		// $.get("/api/rooms", (data) => {
-		// 	console.log(data)
-		// 	// if(!data.length){
-		// 	// 	window.location.href="/room"
-		// 	// }
-		// 	const rowsToAdd= [];
-		// 	for(let i=0; i<data.length; i++){
-		// 		const listOption = $("<option>")
-		// 		console.log(data[i].id)
-		// 		listOption.attr("value", data[i].id);
-		// 		listOption.text(data[i].room_name);
-		// 		rowsToAdd.push(listOption);
-		// 	}
-		// 	// roomSelect.empty();
-		// 	console.log(roomSelect);
-		// 	roomSelect.append(rowsToAdd);
-		// 	roomSelect.val(data.id);
-		// 	console.log(roomSelect);
-		// });
+
 	});
 
 	const modal = document.getElementById('myModal');
