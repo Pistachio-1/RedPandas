@@ -7,13 +7,13 @@ $(".round16A").click(function(){
     $.ajax ({
         url:'/api/brackets/',
         data: {round16_game_1: teamA1,
-        id: 2,
-        user_name: "allie"},
+        id: 3,
+        user_name: "rabits"},
         type: 'post',
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 });
@@ -31,7 +31,7 @@ $(".round16C").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 });
@@ -50,7 +50,7 @@ $(".round16E").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 });
@@ -69,7 +69,7 @@ $(".round16G").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 })
@@ -88,7 +88,7 @@ $(".round16B").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 })
@@ -107,7 +107,7 @@ $(".round16D").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 })
@@ -126,7 +126,7 @@ $(".round16F").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 })
@@ -163,7 +163,7 @@ $(".round2AC1").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 })
@@ -181,7 +181,7 @@ $(".round2AC2").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 })
@@ -200,7 +200,7 @@ $(".round2EG1").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 })
@@ -218,7 +218,7 @@ $(".round2EG2").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 })
@@ -237,7 +237,7 @@ $(".round2BD1").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 })
@@ -255,7 +255,7 @@ $(".round2BD2").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 })
@@ -275,7 +275,7 @@ $(".round2FH1").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 })
@@ -293,7 +293,7 @@ $(".round2FH2").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });
 })
@@ -313,7 +313,7 @@ $("#round3AC").click(function(){
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });      
 });
@@ -331,7 +331,7 @@ $("#round3EG").click(function() {
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });     
 });
@@ -351,7 +351,7 @@ $("#round3BD").click(function() {
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });    
 });
@@ -370,7 +370,7 @@ $("#round3FH").click(function() {
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });   
 })
@@ -391,7 +391,7 @@ $("#round4ACEG").click(function() {
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });   
 });
@@ -408,7 +408,7 @@ $("#round4BDFH").click(function() {
         success: function(response) {
         },
         error : function(e) {
-            alert("data not sent")
+            
         }
     });  
 });
