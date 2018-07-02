@@ -89,8 +89,6 @@ $(function () {
 				listOption.attr("value", data[i].id);
 				listOption.text(data[i].room_name);
 				rowsToAdd.push(listOption);
-				if (err){throw err}
-				return listOption;
 			}
 			roomSelect.empty();
 			console.log(rowsToAdd);
