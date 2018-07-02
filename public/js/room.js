@@ -21,7 +21,7 @@ $(function() {
       const roomPass = $("#room_pass").val().trim();
       const roomConPass = $("#room_confirmpass").val().trim();
     event.preventDefault();
-    if (!user || !room || !roomConPass || !roomPass ) {
+    if (!room || !roomConPass || !roomPass ) {
       $("#inputAlert").append("Please fill out the whole form.");
       return;
     }

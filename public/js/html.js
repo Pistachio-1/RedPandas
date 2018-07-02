@@ -70,34 +70,26 @@ $(function () {
 		$('#login-form-link').removeClass('active');
 		$(this).addClass('active');
 		event.preventDefault();
-		const username = $("#user_name").val().trim();
-		const email = $("#email").val().trim();
-		const password = $("#pass_word").val().trim();
-		const confPass = $("#confirm-password").val().trim();
-		const roomSelect = $("#room").val();
 
-
-		$.get("/api/rooms", (data) => {
-			console.log(data)
-			if(!data.length){
-				window.location.href="/room"
-			}
-			const rowsToAdd= [];
-			for(let i=0; i<data.length; i++){
-				const listOption = $("<option>")
-				console.log(data[i].id)
-				listOption.attr("value", data[i].id);
-				listOption.text(data[i].room_name);
-				rowsToAdd.push(listOption);
-			}
-			// roomSelect.empty();
-			console.log(roomSelect);
-			roomSelect.append(rowsToAdd);
-			roomSelect.val(data.id);
-			console.log(roomSelect);
-	
-	
-		});
+		// $.get("/api/rooms", (data) => {
+		// 	console.log(data)
+		// 	// if(!data.length){
+		// 	// 	window.location.href="/room"
+		// 	// }
+		// 	const rowsToAdd= [];
+		// 	for(let i=0; i<data.length; i++){
+		// 		const listOption = $("<option>")
+		// 		console.log(data[i].id)
+		// 		listOption.attr("value", data[i].id);
+		// 		listOption.text(data[i].room_name);
+		// 		rowsToAdd.push(listOption);
+		// 	}
+		// 	// roomSelect.empty();
+		// 	console.log(roomSelect);
+		// 	roomSelect.append(rowsToAdd);
+		// 	roomSelect.val(data.id);
+		// 	console.log(roomSelect);
+		// });
 	});
 
 	const modal = document.getElementById('myModal');
@@ -138,9 +130,14 @@ $(function () {
 	})
 	
 	
-	$("#register-submit").on("submit",  (event) => {
-		event.preventDefault();
-		if (!username || !email || !password || !confPass || !roomSelect) {
+	$("#register-submit").on("click",  () => {
+		const username = $("#user_name").val().trim();
+		const email = $("#email").val().trim();
+		const password = $("#pass_word").val().trim();
+		const confPass = $("#confirm-password").val().trim();
+		const roomSelect = $("#room").val();
+
+		if (!username || !email || !password || !confPass){ //|| !roomSelect) {
 			$("#tryAgain").append("Please fill out the whole form.")
 			return;
 		}
@@ -151,15 +148,17 @@ $(function () {
 			user_name: username,
 			email: email,
 			user_password: password,
-			RoomId: roomSelect.val()
+			RoomId: 1
 		};
 
 		console.log(newUser)
 
 		$.post("api/users/", newUser)
-			.then(function() {
-				window.location.href = "/room";
-		});
+		.then($.get("/api/users/",  (res) => {
+			console.log(newUser)
+			$(location).attr('href', '/room')
+		
+		}))
 
 	});		
 
