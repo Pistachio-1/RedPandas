@@ -1,0 +1,8 @@
+{
+        "username": "m8zxztfnqkmebvt4",
+        "password": "apzovmb0baqz6r4q",
+        "database": "z36nl4mowus87yqc",
+        "host": "jsftj8ez0cevjz8v.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+        "port": 3306,
+        "dialect": "mysql"
+}
