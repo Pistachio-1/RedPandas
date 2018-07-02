@@ -1,27 +1,36 @@
-DROP DATABASE IF EXISTS worldcup_db;
-CREATE DATABASE worldcup_db;
-USE worldcup_db;
+-- DROP DATABASE IF EXISTS worldcup_db;
+-- CREATE DATABASE worldcup_db;
+-- USE worldcup_db;
 
+USE zh3n7ngbgg0cgmms;
+
+DROP TABLE users IF EXISTS
 CREATE TABLE users
 (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     user_name VARCHAR(30) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    user_password VARCHAR(20) NOT NULL
+    user_password VARCHAR(20) NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+DROP TABLE rooms IF EXISTS
 CREATE TABLE rooms
 (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-	room_name VARCHAR(30) NOT NULL
+	room_name VARCHAR(30) NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+DROP TABLE room_participants IF EXISTS
 CREATE TABLE room_participants
 (
     room_name INT(12) NOT NULL,
-    user_name VARCHAR(30) NOT NULL
+    user_name VARCHAR(30) NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+DROP TABLE bracket IF EXISTS
 CREATE TABLE bracket
 (
     user_name VARCHAR(30) NOT NULL,
@@ -39,5 +48,6 @@ CREATE TABLE bracket
     round8_game_4 VARCHAR(30) NOT NULL,
     round4_game_1 VARCHAR(30) NOT NULL,
     round4_game_2 VARCHAR(30) NOT NULL,
-    champion VARCHAR(30) NOT NULL
+    champion VARCHAR(30) NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )

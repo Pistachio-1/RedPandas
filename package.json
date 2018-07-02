@@ -4,7 +4,8 @@
   "description": "Red Pandas at the World Cup ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm --coverage",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,10 @@
     "mysql": "^2.15.0",
     "mysql2": "^1.5.3",
     "path": "^0.12.7",
-    "sequelize": "^4.38.0"
+    "sequelize": "^4.38.0",
+    "sequelize-heroku": "^2.0.0"
+  },
+  "engines": {
+    "node": "8.11.1"
   }
 }
