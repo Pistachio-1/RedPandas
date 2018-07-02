@@ -27,7 +27,7 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li role="presentation"><a href="index.html" >Home</a></li>
-                    <li role="presentation"><a href="#">how to use</a></li>
+                    <li role="presentation"><a href="roomparti.html">how to use</a></li>
                     <li role="presentation"><a href="#">connect to a room </a></li>
                     <li role="presentation"><a href="#">contact </a></li>
                 </ul>
@@ -40,35 +40,37 @@
     <div class="room" id="room">
         <h1>JOIN A ROOM</h1>
         <p>Join a room to compete with your friends or other users.</p>
-        <p class="roomLink" id="joinRoom"><i class="fas fa-plus"></i>  Check out all the rooms</p>
+        <button class="roomLink" id="joinRoom"><i class="fas fa-plus"></i>  Check out all the rooms</button>
         <div class="allRooms" id="all-rooms"></div>
+
 
         <h1>CREATE A ROOM</h1>
         <p>Create your own room and invite your friends</p>
-        <p class="roomLink" id = "createRoom"><i class="fas fa-plus-circle"></i>  Create your own!</p>
+        <button class="roomLink" id = "createRoom"><i class="fas fa-plus-circle"></i>  Create your own!</button>
+       <div class = "break">
         <div class="createRoom" id="create-room">
             <form id="create-form"  role="form" style="display: block;">
                 <div id="inputAlert"></div>
                 <div class="form-group">
-                    <input type="text" name="roomname" id="room_name" tabindex="1" class="form-control" placeholder="Room Name" value="">
+                    <input type="text" name="roomname" id="room_name" tabindex="2" class="form-control" placeholder="Room Name" value="">
                 </div>
                 <div class="form-group">
-                    <input type="password" name="roompassword" id="room_pass" tabindex="2" class="form-control" placeholder="Password: Enter a 4 digit number">
+                    <input type="password" name="roompassword" id="room_pass" tabindex="3" class="form-control" placeholder="Password: Enter a 4 digit number">
                 </div>
                 <div class="form-group">
-                    <input type="password" name="room-confirmpass" id="room_confirmpass" tabindex="3" class="form-control" placeholder="Confirm Password: Re-enter a 4 digit number">
+                    <input type="password" name="room-confirmpass" id="room_confirmpass" tabindex="4" class="form-control" placeholder="Confirm Password: Re-enter a 4 digit number">
                 </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-6">
-                            <input type="submit" name="room-submit" id="room-submit" tabindex="4" class="form-control btn btn-register" value="Submit">
+                            <input type="submit" name="room-submit" id="room-submit" tabindex="5" class="form-control btn btn-register" value="Submit">
                         </div>
                     </div>
                 </div>
             </form>
         </div>
+        </div>
     </div>
-    <div id="room-participants">
 
 
     </div>
