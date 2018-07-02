@@ -61,22 +61,51 @@ body, html {
 .room > button:hover {
 	background-color: #1CA347
 }
-.createRoom {
-	padding: 10px;
-	max-width: 600px;
-	margin-left: 50px;
-}
 
-.allRooms > .roomList > ul:hover {
+.allRooms {
+	padding: 10px;
+}
+.roomList {
+	max-width: 550px;
+	padding: 30px;
+	margin: auto;
+	background: rgba(0, 0, 0, 0.40);
+}
+.roomList > span:hover {
+	color: #fff;
+	font-size: 18px;
+	text-decoration: underline;
+}
+.break {
+	padding:10px;
+}
+.createRoom {
+	max-width: 550px;
+	padding: 30px;
+	margin: auto;
+	
+}
+.enterPass{ 
+	padding-bottom:10px;
+	margin-left: 70px;
+	max-width: 200px;
+}
+.user > ul{
+	margin-left: 25px;
+	margin-bottom: 0px;
+}
+.user >ul:hover{
 	color: #fff;
 	text-decoration: underline;
 }
-.roomList {
-	margin-left: 35px;
+.user >ul:nth-child(even){
+	background: rgba(0, 0, 0, 0.80);
 }
-.enterPass{
-	max-width: 200px;
+.user> ul:nth-child(odd) {
+	background: rgba(0, 0, 0, 0.40)
 }
+
+
 
 /* navbar*/
 .navbar.navbar-default.navbar-fixed-top {

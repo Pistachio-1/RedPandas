@@ -1,9 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
   const Brackets = sequelize.define("Brackets", {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
+      autoIncrement: true,
       allowNull: false
     },
 
@@ -23,10 +23,5 @@ module.exports = (sequelize, DataTypes) => {
       round4_game_2 : DataTypes.STRING,
       champion : DataTypes.STRING
   });
-  // Brackets.associate = function(models){ 
-  //     Brackets.belongsToMany(models.Rooms, {
-  //       through: models.User
-  //     })
-  //   }
   return Brackets
 };

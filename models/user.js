@@ -30,8 +30,9 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
   }
   });
+
   User.associate = function(models) { 
-    User.belongsToMany(models.Rooms, {through:models.Brackets},{
+    User.belongsTo(models.Rooms, {through:models.Brackets},{
       onDelete: "cascade"
     })
   }
