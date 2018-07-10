@@ -1,3 +1,4 @@
+const $ = require("jquery");
 const WORLDCUPURL = "https://worldcup.sfg.io/";
 const ALLMATCHES = "/matches";
 const CURRENTMATCHES = "/matches/current";
